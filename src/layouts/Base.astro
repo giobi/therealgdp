@@ -11,6 +11,7 @@ interface Props {
 const { title, description, locale } = Astro.props;
 const otherLocale = getOtherLocale(locale);
 const otherLocalePath = Astro.url.pathname.replace(`/${locale}/`, `/${otherLocale}/`);
+const GA_ID = import.meta.env.PUBLIC_GA_ID || "";
 ---
 
 <!DOCTYPE html>
@@ -18,6 +19,17 @@ const otherLocalePath = Astro.url.pathname.replace(`/${locale}/`, `/${otherLocal
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {GA_ID && (
+    <Fragment>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} is:inline></script>
+      <script is:inline define:vars={{ GA_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", GA_ID);
+      </script>
+    </Fragment>
+  )}
   <title>{title} — The Real GDP</title>
   <meta name="description" content={description || t(locale, 'site.description')} />
   <link rel="alternate" hreflang={otherLocale} href={otherLocalePath} />
