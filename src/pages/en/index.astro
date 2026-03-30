@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icons.astro';
 import { t } from '@/i18n';
 import countries from '@/data/countries.json';
 
@@ -22,11 +23,26 @@ const ranked = countries
       </h1>
       <p class="text-text-secondary text-lg max-w-2xl leading-relaxed">{t(locale, 'home.hero_sub')}</p>
       <div class="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-px bg-border rounded-xl overflow-hidden max-w-2xl">
-        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Physical</div><div class="text-blue font-bold mt-1">🏗️</div></div>
-        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Human</div><div class="text-green font-bold mt-1">🧠</div></div>
-        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Natural</div><div class="text-amber font-bold mt-1">🌍</div></div>
-        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Institutions</div><div class="text-accent-light font-bold mt-1">⚖️</div></div>
-        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Technology</div><div class="text-red font-bold mt-1">⚡</div></div>
+        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
+          <Icon name="physical" size={20} class="text-blue" />
+          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Physical</div>
+        </div>
+        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
+          <Icon name="human" size={20} class="text-green" />
+          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Human</div>
+        </div>
+        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
+          <Icon name="natural" size={20} class="text-amber" />
+          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Natural</div>
+        </div>
+        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
+          <Icon name="institutions" size={20} class="text-accent-light" />
+          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Institutions</div>
+        </div>
+        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
+          <Icon name="technology" size={20} class="text-red" />
+          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Technology</div>
+        </div>
       </div>
     </div>
   </section>
@@ -52,11 +68,11 @@ const ranked = countries
             <th class="text-left px-4 py-3 w-10">#</th>
             <th class="text-left px-4 py-3">Country</th>
             <th class="text-center px-3 py-3 text-accent-light">Real GDP</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell text-blue">Phys</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell text-green">Hum</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell text-amber">Nat</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell text-accent-light">Inst</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell text-red">Tech</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="physical" size={14} class="text-blue inline-block" /></th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="human" size={14} class="text-green inline-block" /></th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="natural" size={14} class="text-amber inline-block" /></th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="institutions" size={14} class="text-accent-light inline-block" /></th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="technology" size={14} class="text-red inline-block" /></th>
             <th class="text-right px-4 py-3 hidden md:table-cell">GDP/cap</th>
           </tr>
         </thead>
@@ -66,8 +82,11 @@ const ranked = countries
                 data-region={c.region}>
               <td class="px-4 py-2.5 text-text-muted font-mono text-xs rank-cell">{i + 1}</td>
               <td class="px-4 py-2.5">
-                <a href={`/${locale}/country/${c.code.toLowerCase()}`} class="flex items-center gap-2 hover:text-accent-light transition-colors">
-                  <span>{c.flag}</span>
+                <a href={`/${locale}/country/${c.code.toLowerCase()}`} class="flex items-center gap-2.5 hover:text-accent-light transition-colors">
+                  <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
+                       srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
+                       width="20" height="15" alt={c.code}
+                       class="rounded-sm shadow-sm" loading="lazy" />
                   <span class="font-semibold">{c.name_en}</span>
                 </a>
               </td>

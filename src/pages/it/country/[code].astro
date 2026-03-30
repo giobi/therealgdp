@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icons.astro';
 import { t } from '@/i18n';
 import countries from '@/data/countries.json';
 
@@ -22,16 +23,28 @@ const ranked = countries
   .map(c => ({ code: c.code, score: Math.round((c.physical + c.human + c.natural + c.institutions + c.technology) / 5 * 10) / 10 }))
   .sort((a, b) => b.score - a.score);
 const rank = ranked.findIndex(r => r.code === country.code) + 1;
+
+const dimensions = [
+  { key: 'physical', label: 'Capitale Fisico', color: 'blue', val: country.physical, desc: 'Infrastrutture, macchinari, edifici, reti' },
+  { key: 'human', label: 'Capitale Umano', color: 'green', val: country.human, desc: 'Istruzione, salute, competenze, aspettativa di vita' },
+  { key: 'natural', label: 'Capitale Naturale', color: 'amber', val: country.natural, desc: 'Terra, foreste, minerali, ecosistemi' },
+  { key: 'institutions', label: 'Capitale Istituzionale', color: 'accent-light', val: country.institutions, desc: 'Stato di diritto, governance, controllo corruzione' },
+  { key: 'technology', label: 'Tecnologia', color: 'red', val: country.technology, desc: 'R&S, brevetti, innovazione, TFP' },
+];
 ---
 
 <Base title={`${name} — Real GDP ${realGdp}`} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-16">
-    
-    <a href={`/${locale}/`} class="text-text-muted text-sm hover:text-accent-light transition-colors mb-6 inline-block">&larr; {t(locale, 'country.back')}</a>
 
-    <!-- Header -->
+    <a href={`/${locale}/`} class="text-text-muted text-sm hover:text-accent-light transition-colors mb-6 inline-flex items-center gap-1.5">
+      <Icon name="arrow-left" size={14} /> {t(locale, 'country.back')}
+    </a>
+
     <div class="flex items-center gap-4 mb-8">
-      <span class="text-5xl">{country.flag}</span>
+      <img src={`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`}
+           srcset={`https://flagcdn.com/w160/${country.code.toLowerCase()}.png 2x`}
+           width="56" height="42" alt={country.code}
+           class="rounded shadow-md" />
       <div>
         <h1 class="text-3xl font-black tracking-tight">{name}</h1>
         <p class="text-text-secondary">Rank #{rank} of {countries.length} &middot; GDP/cap ${(country.gdp_per_capita_ppp / 1000).toFixed(1)}k PPP</p>
@@ -42,29 +55,22 @@ const rank = ranked.findIndex(r => r.code === country.code) + 1;
       </div>
     </div>
 
-    <!-- Radar chart + scores -->
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-surface border border-border rounded-xl p-6">
         <h2 class="text-sm font-bold uppercase tracking-wider text-text-muted mb-4">{t(locale, 'country.radar_title')}</h2>
         <canvas id="radar-chart" height="300"></canvas>
       </div>
       <div class="flex flex-col gap-3">
-        {[
-          { key: 'physical', label: 'Capitale Fisico', icon: '🏗️', color: 'blue', val: country.physical, desc: 'Infrastrutture, macchinari, edifici, reti' },
-          { key: 'human', label: 'Capitale Umano', icon: '🧠', color: 'green', val: country.human, desc: 'Istruzione, salute, competenze, aspettativa di vita' },
-          { key: 'natural', label: 'Capitale Naturale', icon: '🌍', color: 'amber', val: country.natural, desc: 'Terra, foreste, minerali, ecosistemi' },
-          { key: 'institutions', label: 'Capitale Istituzionale', icon: '⚖️', color: 'accent-light', val: country.institutions, desc: 'Stato di diritto, governance, controllo corruzione' },
-          { key: 'technology', label: 'Tecnologia', icon: '⚡', color: 'red', val: country.technology, desc: 'R&S, brevetti, innovazione, TFP' },
-        ].map(d => (
+        {dimensions.map(d => (
           <div class="bg-surface border border-border rounded-lg p-4 flex items-center gap-4">
-            <span class="text-2xl">{d.icon}</span>
+            <Icon name={d.key} size={28} class={`text-${d.color} shrink-0`} />
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between">
                 <span class="font-semibold text-sm">{d.label}</span>
                 <span class={`font-bold tabular-nums text-${d.color}`}>{d.val}</span>
               </div>
               <div class="w-full h-1.5 bg-border rounded-full mt-1.5 overflow-hidden">
-                <div class={`h-full bg-${d.color} rounded-full transition-all`} style={`width: ${d.val}%`}></div>
+                <div class={`h-full bg-${d.color} rounded-full`} style={`width: ${d.val}%`}></div>
               </div>
               <p class="text-xs text-text-muted mt-1">{d.desc}</p>
             </div>

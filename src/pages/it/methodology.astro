@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icons.astro';
 import { t } from '@/i18n';
 const locale = 'it';
 ---
@@ -23,35 +24,35 @@ const locale = 'it';
     
     <div class="space-y-6 mb-10">
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><span>🏗️</span> Physical Capital</h3>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="physical" size={20} class="text-blue inline-block" /> Physical Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastructure, machinery, buildings, transport networks, energy grids, telecoms. Everything humans have built that enables production.</p>
         <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Gross Fixed Capital Formation (% GDP), Infrastructure Quality Index (WEF), Logistics Performance Index (World Bank)</div>
         <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Adam Smith, "The Wealth of Nations" (1776)</div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><span>🧠</span> Human Capital</h3>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="human" size={20} class="text-green inline-block" /> Human Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Education, health, skills, experience. The productive capacity of people. The single largest component of national wealth in advanced economies (~70%).</p>
         <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Human Capital Index (World Bank), HDI education & health components (UNDP), PISA scores (OECD)</div>
         <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Gary Becker, "Human Capital" (1964) — <span class="text-amber">Nobel 1992</span></div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><span>🌍</span> Natural Capital</h3>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="natural" size={20} class="text-amber inline-block" /> Natural Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Arable land, forests, mineral reserves, water, biodiversity, ecosystem services. Both renewable and non-renewable. The asset most distorted by GDP accounting.</p>
         <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Natural Capital per capita (CWON, World Bank), Forest coverage (FAO), Environmental Performance Index (Yale)</div>
         <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Herman Daly, "Beyond Growth" (1996); UNEP Inclusive Wealth Report</div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><span>⚖️</span> Institutional Capital</h3>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="institutions" size={20} class="text-accent-light inline-block" /> Institutional Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Rule of law, government effectiveness, corruption control, regulatory quality, political stability, accountability. The rules of the game and how well they're enforced.</p>
         <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Worldwide Governance Indicators — 6 dimensions (World Bank), Corruption Perceptions Index (Transparency International)</div>
         <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Douglass North (1990) — <span class="text-amber">Nobel 1993</span>; Acemoglu, Johnson & Robinson — <span class="text-amber">Nobel 2024</span></div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><span>⚡</span> Technology & Innovation</h3>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="technology" size={20} class="text-red inline-block" /> Technology & Innovation</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">R&D expenditure, patents, scientific output, total factor productivity. The "Solow residual" — the growth that can't be explained by more labor or more capital.</p>
         <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> R&D expenditure (% GDP), Patent applications (WIPO), TFP (Penn World Table)</div>
         <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Robert Solow (1956) — <span class="text-amber">Nobel 1987</span>; Paul Romer (1990) — <span class="text-amber">Nobel 2018</span></div>
@@ -61,7 +62,7 @@ const locale = 'it';
     <!-- Limitations -->
     <h2 class="text-xl font-bold mb-4">Limiti</h2>
     <div class="bg-card border border-border rounded-xl p-5 mb-10 text-text-secondary text-sm leading-relaxed">
-      <p class="mb-3">Questa e un'approssimazione, non un vangelo. Honest caveats:</p>
+      <p class="mb-3">Questa è un'approssimazione, non un vangelo. Honest caveats:</p>
       <p class="mb-2"><strong class="text-text">Equal weights are a choice.</strong> Weighting all 5 dimensions equally is simple and transparent, but it's a political decision. You might argue institutions matter more than natural capital, or vice versa.</p>
       <p class="mb-2"><strong class="text-text">Each score compresses complexity.</strong> "Institutions: 58" for Italy hides enormous variation between Northern and Southern regions, between different aspects of governance.</p>
       <p class="mb-2"><strong class="text-text">Data availability varies.</strong> Some countries have better statistical infrastructure than others. Low-income countries may have less reliable data.</p>
