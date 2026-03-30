@@ -1,3 +1,14 @@
 ---
-return Astro.redirect('/en/');
+// Static build: can't do server redirects, use instant client-side redirect
 ---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0;url=/en/" />
+  <link rel="canonical" href="/en/" />
+  <title>Redirecting...</title>
+  <script is:inline>window.location.replace('/en/');</script>
+</head>
+<body></body>
+</html>
