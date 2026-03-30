@@ -1,0 +1,63 @@
+---
+import '@/styles/global.css';
+import { t, getOtherLocale } from '@/i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  locale: string;
+}
+
+const { title, description, locale } = Astro.props;
+const otherLocale = getOtherLocale(locale);
+const otherLocalePath = Astro.url.pathname.replace(`/${locale}/`, `/${otherLocale}/`);
+---
+
+<!DOCTYPE html>
+<html lang={locale} class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — The Real GDP</title>
+  <meta name="description" content={description || t(locale, 'site.description')} />
+  <link rel="alternate" hreflang={otherLocale} href={otherLocalePath} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" is:inline></script>
+</head>
+<body class="bg-bg text-text font-[Inter,system-ui,sans-serif] antialiased min-h-screen flex flex-col">
+  
+  <!-- Nav -->
+  <nav class="border-b border-border sticky top-0 z-50 bg-bg/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <a href={`/${locale}/`} class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
+        <span class="text-accent-light">■</span> The Real GDP
+      </a>
+      <div class="flex items-center gap-6 text-sm font-medium">
+        <a href={`/${locale}/`} class="text-text-secondary hover:text-text transition-colors">{t(locale, 'nav.home')}</a>
+        <a href={`/${locale}/methodology`} class="text-text-secondary hover:text-text transition-colors">{t(locale, 'nav.methodology')}</a>
+        <a href={otherLocalePath} class="px-2 py-0.5 rounded border border-border text-xs font-bold text-accent-light hover:bg-accent/10 transition-colors">
+          {t(locale, 'nav.lang')}
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+      <p>{t(locale, 'footer.built')}</p>
+      <div class="flex gap-4">
+        <a href={`/${locale}/methodology`} class="hover:text-text transition-colors">{t(locale, 'footer.methodology')}</a>
+        <a href="https://github.com/giobi/therealgdp" target="_blank" class="hover:text-text transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

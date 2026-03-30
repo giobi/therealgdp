@@ -1,0 +1,59 @@
+{
+  "site": {
+    "title": "The Real GDP",
+    "description": "Measuring real wealth beyond GDP. 5 dimensions, open data.",
+    "tagline": "What if we measured wealth the right way?"
+  },
+  "nav": {
+    "home": "Rankings",
+    "methodology": "Methodology",
+    "about": "About",
+    "compare": "Compare",
+    "lang": "IT"
+  },
+  "home": {
+    "hero_title": "The Real GDP",
+    "hero_sub": "GDP measures activity, not wealth. We measure the 5 dimensions that actually matter.",
+    "ranking_title": "Country Rankings",
+    "ranking_sub": "Real GDP score: average of 5 normalized dimensions (0-100)",
+    "col_rank": "Rank",
+    "col_country": "Country",
+    "col_score": "Real GDP",
+    "col_physical": "Physical",
+    "col_human": "Human",
+    "col_natural": "Natural",
+    "col_institutions": "Institutions",
+    "col_technology": "Technology",
+    "col_gdp": "GDP/cap",
+    "filter_all": "All",
+    "filter_europe": "Europe",
+    "filter_americas": "Americas",
+    "filter_asia": "Asia Pacific",
+    "filter_africa": "Africa & ME"
+  },
+  "methodology": {
+    "title": "Methodology",
+    "sub": "How we calculate the Real GDP score",
+    "intro": "The Real GDP is the simple average of 5 normalized dimensions, each scored 0-100.",
+    "dim_physical": "Physical Capital",
+    "dim_human": "Human Capital",
+    "dim_natural": "Natural Capital",
+    "dim_institutions": "Institutional Capital",
+    "dim_technology": "Technology & Innovation",
+    "sources_title": "Data Sources",
+    "limitations_title": "Limitations",
+    "limitations_text": "This is an approximation. Each dimension compresses complex realities into a single number. The weights are equal by default — a political choice. We publish the data so you can weight them yourself."
+  },
+  "country": {
+    "back": "Back to rankings",
+    "radar_title": "5-Dimension Profile",
+    "details": "Dimension Details",
+    "vs_gdp": "Real GDP vs GDP per capita"
+  },
+  "footer": {
+    "source": "Open data",
+    "github": "GitHub",
+    "methodology": "Methodology",
+    "built": "Built with open data from World Bank, UNDP, WIPO"
+  }
+}

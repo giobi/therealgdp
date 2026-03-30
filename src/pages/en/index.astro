@@ -1,0 +1,116 @@
+---
+import Base from '@/layouts/Base.astro';
+import { t } from '@/i18n';
+import countries from '@/data/countries.json';
+
+const locale = 'en';
+const ranked = countries
+  .map(c => ({
+    ...c,
+    realGdp: Math.round((c.physical + c.human + c.natural + c.institutions + c.technology) / 5 * 10) / 10
+  }))
+  .sort((a, b) => b.realGdp - a.realGdp);
+---
+
+<Base title={t(locale, 'home.hero_title')} locale={locale}>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-teal/5 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-12 relative">
+      <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">{t(locale, 'site.tagline')}</p>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-4">
+        The <span class="text-accent-light">Real</span> GDP
+      </h1>
+      <p class="text-text-secondary text-lg max-w-2xl leading-relaxed">{t(locale, 'home.hero_sub')}</p>
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-px bg-border rounded-xl overflow-hidden max-w-2xl">
+        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Physical</div><div class="text-blue font-bold mt-1">🏗️</div></div>
+        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Human</div><div class="text-green font-bold mt-1">🧠</div></div>
+        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Natural</div><div class="text-amber font-bold mt-1">🌍</div></div>
+        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Institutions</div><div class="text-accent-light font-bold mt-1">⚖️</div></div>
+        <div class="bg-surface p-3 text-center"><div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Technology</div><div class="text-red font-bold mt-1">⚡</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-6 gap-4">
+      <div>
+        <h2 class="text-xl font-bold">{t(locale, 'home.ranking_title')}</h2>
+        <p class="text-text-muted text-sm mt-1">{t(locale, 'home.ranking_sub')}</p>
+      </div>
+      <div class="flex gap-1 text-xs font-semibold flex-wrap" id="region-filters">
+        <button data-region="all" class="px-3 py-1.5 rounded-full bg-accent/15 text-accent-light border border-accent/30">All</button>
+        <button data-region="europe" class="px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">Europe</button>
+        <button data-region="americas" class="px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">Americas</button>
+        <button data-region="asia" class="px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">Asia</button>
+        <button data-region="africa" class="px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">Africa</button>
+      </div>
+    </div>
+    <div class="bg-surface border border-border rounded-xl overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
+            <th class="text-left px-4 py-3 w-10">#</th>
+            <th class="text-left px-4 py-3">Country</th>
+            <th class="text-center px-3 py-3 text-accent-light">Real GDP</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell text-blue">Phys</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell text-green">Hum</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell text-amber">Nat</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell text-accent-light">Inst</th>
+            <th class="text-center px-2 py-3 hidden sm:table-cell text-red">Tech</th>
+            <th class="text-right px-4 py-3 hidden md:table-cell">GDP/cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ranked.map((c, i) => (
+            <tr class="border-b border-border/50 hover:bg-card/50 transition-colors country-row"
+                data-region={c.region}>
+              <td class="px-4 py-2.5 text-text-muted font-mono text-xs rank-cell">{i + 1}</td>
+              <td class="px-4 py-2.5">
+                <a href={`/${locale}/country/${c.code.toLowerCase()}`} class="flex items-center gap-2 hover:text-accent-light transition-colors">
+                  <span>{c.flag}</span>
+                  <span class="font-semibold">{c.name_en}</span>
+                </a>
+              </td>
+              <td class="text-center px-3 py-2.5">
+                <div class="inline-flex items-center gap-2">
+                  <div class="w-14 h-1.5 bg-border rounded-full overflow-hidden hidden sm:block">
+                    <div class="h-full bg-accent-light rounded-full" style={`width: ${c.realGdp}%`}></div>
+                  </div>
+                  <span class="font-bold text-accent-light tabular-nums">{c.realGdp}</span>
+                </div>
+              </td>
+              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-blue/80 text-xs">{c.physical}</td>
+              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-green/80 text-xs">{c.human}</td>
+              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-amber/80 text-xs">{c.natural}</td>
+              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-accent-light/80 text-xs">{c.institutions}</td>
+              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-red/80 text-xs">{c.technology}</td>
+              <td class="text-right px-4 py-2.5 hidden md:table-cell text-text-muted tabular-nums text-xs">
+                ${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-text-muted text-xs mt-4 text-center">Data sources: World Bank (WDI, WGI, CWON), UNDP (HDI/HCI), WIPO. Scores normalized 0-100. <a href={`/${locale}/methodology`} class="text-accent-light hover:underline">Full methodology</a></p>
+  </section>
+
+  <script is:inline>
+    document.getElementById('region-filters')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const region = btn.dataset.region;
+      document.querySelectorAll('#region-filters button').forEach(b => {
+        b.className = b === btn
+          ? 'px-3 py-1.5 rounded-full bg-accent/15 text-accent-light border border-accent/30'
+          : 'px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30';
+      });
+      let rank = 0;
+      document.querySelectorAll('.country-row').forEach(row => {
+        const show = region === 'all' || row.dataset.region === region;
+        row.style.display = show ? '' : 'none';
+        if (show) { rank++; row.querySelector('.rank-cell').textContent = rank; }
+      });
+    });
+  </script>
+</Base>

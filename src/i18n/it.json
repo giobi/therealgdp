@@ -1,0 +1,59 @@
+{
+  "site": {
+    "title": "The Real GDP",
+    "description": "Misurare la ricchezza reale oltre il PIL. 5 dimensioni, dati aperti.",
+    "tagline": "E se misurassimo la ricchezza nel modo giusto?"
+  },
+  "nav": {
+    "home": "Classifica",
+    "methodology": "Metodologia",
+    "about": "Info",
+    "compare": "Confronta",
+    "lang": "EN"
+  },
+  "home": {
+    "hero_title": "The Real GDP",
+    "hero_sub": "Il PIL misura l'attivita, non la ricchezza. Noi misuriamo le 5 dimensioni che contano davvero.",
+    "ranking_title": "Classifica Paesi",
+    "ranking_sub": "Punteggio Real GDP: media delle 5 dimensioni normalizzate (0-100)",
+    "col_rank": "#",
+    "col_country": "Paese",
+    "col_score": "Real GDP",
+    "col_physical": "Fisico",
+    "col_human": "Umano",
+    "col_natural": "Naturale",
+    "col_institutions": "Istituzioni",
+    "col_technology": "Tecnologia",
+    "col_gdp": "PIL/cap",
+    "filter_all": "Tutti",
+    "filter_europe": "Europa",
+    "filter_americas": "Americhe",
+    "filter_asia": "Asia Pacifico",
+    "filter_africa": "Africa & MO"
+  },
+  "methodology": {
+    "title": "Metodologia",
+    "sub": "Come calcoliamo il punteggio Real GDP",
+    "intro": "Il Real GDP e la media semplice di 5 dimensioni normalizzate, ciascuna con punteggio 0-100.",
+    "dim_physical": "Capitale Fisico",
+    "dim_human": "Capitale Umano",
+    "dim_natural": "Capitale Naturale",
+    "dim_institutions": "Capitale Istituzionale",
+    "dim_technology": "Tecnologia e Innovazione",
+    "sources_title": "Fonti Dati",
+    "limitations_title": "Limiti",
+    "limitations_text": "Questa e un'approssimazione. Ogni dimensione comprime realta complesse in un singolo numero. I pesi sono uguali di default — una scelta politica. Pubblichiamo i dati cosi puoi pesarli tu."
+  },
+  "country": {
+    "back": "Torna alla classifica",
+    "radar_title": "Profilo a 5 Dimensioni",
+    "details": "Dettaglio Dimensioni",
+    "vs_gdp": "Real GDP vs PIL pro capite"
+  },
+  "footer": {
+    "source": "Dati aperti",
+    "github": "GitHub",
+    "methodology": "Metodologia",
+    "built": "Costruito con dati aperti da World Bank, UNDP, WIPO"
+  }
+}

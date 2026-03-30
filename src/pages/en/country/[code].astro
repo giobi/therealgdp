@@ -1,0 +1,113 @@
+---
+import Base from '@/layouts/Base.astro';
+import { t } from '@/i18n';
+import countries from '@/data/countries.json';
+
+const locale = 'en';
+
+export function getStaticPaths() {
+  return import('@/data/countries.json').then(m =>
+    m.default.map((c: any) => ({ params: { code: c.code.toLowerCase() } }))
+  );
+}
+
+const { code } = Astro.params;
+const country = countries.find(c => c.code.toLowerCase() === code);
+if (!country) return Astro.redirect(`/${locale}/`);
+
+const realGdp = Math.round((country.physical + country.human + country.natural + country.institutions + country.technology) / 5 * 10) / 10;
+const name = locale === 'en' ? country.name_en : country.name_it;
+
+const ranked = countries
+  .map(c => ({ code: c.code, score: Math.round((c.physical + c.human + c.natural + c.institutions + c.technology) / 5 * 10) / 10 }))
+  .sort((a, b) => b.score - a.score);
+const rank = ranked.findIndex(r => r.code === country.code) + 1;
+---
+
+<Base title={`${name} — Real GDP ${realGdp}`} locale={locale}>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-16">
+    
+    <a href={`/${locale}/`} class="text-text-muted text-sm hover:text-accent-light transition-colors mb-6 inline-block">&larr; {t(locale, 'country.back')}</a>
+
+    <!-- Header -->
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-5xl">{country.flag}</span>
+      <div>
+        <h1 class="text-3xl font-black tracking-tight">{name}</h1>
+        <p class="text-text-secondary">Rank #{rank} of {countries.length} &middot; GDP/cap ${(country.gdp_per_capita_ppp / 1000).toFixed(1)}k PPP</p>
+      </div>
+      <div class="ml-auto text-right">
+        <div class="text-4xl font-black text-accent-light">{realGdp}</div>
+        <div class="text-xs text-text-muted uppercase tracking-wider font-semibold">Real GDP</div>
+      </div>
+    </div>
+
+    <!-- Radar chart + scores -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-surface border border-border rounded-xl p-6">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-text-muted mb-4">{t(locale, 'country.radar_title')}</h2>
+        <canvas id="radar-chart" height="300"></canvas>
+      </div>
+      <div class="flex flex-col gap-3">
+        {[
+          { key: 'physical', label: 'Physical Capital', icon: '🏗️', color: 'blue', val: country.physical, desc: 'Infrastructure, machinery, buildings, networks' },
+          { key: 'human', label: 'Human Capital', icon: '🧠', color: 'green', val: country.human, desc: 'Education, health, skills, life expectancy' },
+          { key: 'natural', label: 'Natural Capital', icon: '🌍', color: 'amber', val: country.natural, desc: 'Land, forests, minerals, ecosystems' },
+          { key: 'institutions', label: 'Institutional Capital', icon: '⚖️', color: 'accent-light', val: country.institutions, desc: 'Rule of law, governance, corruption control' },
+          { key: 'technology', label: 'Technology', icon: '⚡', color: 'red', val: country.technology, desc: 'R&D, patents, innovation, TFP' },
+        ].map(d => (
+          <div class="bg-surface border border-border rounded-lg p-4 flex items-center gap-4">
+            <span class="text-2xl">{d.icon}</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-sm">{d.label}</span>
+                <span class={`font-bold tabular-nums text-${d.color}`}>{d.val}</span>
+              </div>
+              <div class="w-full h-1.5 bg-border rounded-full mt-1.5 overflow-hidden">
+                <div class={`h-full bg-${d.color} rounded-full transition-all`} style={`width: ${d.val}%`}></div>
+              </div>
+              <p class="text-xs text-text-muted mt-1">{d.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ physical: country.physical, human: country.human, natural: country.natural, institutions: country.institutions, technology: country.technology }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('radar-chart');
+      if (!ctx) return;
+      Chart.defaults.color = '#9ca3af';
+      Chart.defaults.borderColor = 'rgba(37,40,54,0.5)';
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Physical', 'Human', 'Natural', 'Institutions', 'Technology'],
+          datasets: [{
+            data: [physical, human, natural, institutions, technology],
+            backgroundColor: 'rgba(99,102,241,0.15)',
+            borderColor: 'rgba(129,140,248,0.8)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(129,140,248,1)',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            r: {
+              beginAtZero: true, max: 100, min: 0,
+              ticks: { stepSize: 25, backdropColor: 'transparent', font: { size: 10 } },
+              grid: { color: 'rgba(37,40,54,0.6)' },
+              angleLines: { color: 'rgba(37,40,54,0.4)' },
+              pointLabels: { font: { size: 12, weight: 'bold' } }
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    });
+  </script>
+</Base>
