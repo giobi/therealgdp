@@ -5,7 +5,7 @@ import { t } from '@/i18n';
 const locale = 'it';
 ---
 
-<Base title="Methodology" locale={locale}>
+<Base title="Metodologia" locale={locale}>
   <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
     <h1 class="text-3xl font-black tracking-tight mb-2">Metodologia</h1>
     <p class="text-text-secondary text-lg mb-10">Come calcoliamo il punteggio Real GDP e da dove vengono i dati.</p>
@@ -14,59 +14,59 @@ const locale = 'it';
     <div class="bg-surface border border-border rounded-xl p-6 mb-10">
       <p class="text-sm text-text-muted uppercase tracking-wider font-semibold mb-3">Formula</p>
       <p class="text-xl font-mono font-bold text-accent-light text-center py-4">
-        Real GDP = (Physical + Human + Natural + Institutions + Technology) / 5
+        Real GDP = (Fisico + Umano + Naturale + Istituzioni + Tecnologia) / 5
       </p>
-      <p class="text-text-secondary text-sm text-center">Each dimension is normalized 0-100. Equal weights.</p>
+      <p class="text-text-secondary text-sm text-center">Ogni dimensione è normalizzata 0-100. Pesi uguali.</p>
     </div>
 
     <!-- Dimensions -->
     <h2 class="text-xl font-bold mb-4">Le 5 Dimensioni</h2>
-    
+
     <div class="space-y-6 mb-10">
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="physical" size={20} class="text-blue inline-block" /> Physical Capital</h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastructure, machinery, buildings, transport networks, energy grids, telecoms. Everything humans have built that enables production.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Gross Fixed Capital Formation (% GDP), Infrastructure Quality Index (WEF), Logistics Performance Index (World Bank)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Adam Smith, "The Wealth of Nations" (1776)</div>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="physical" size={20} class="text-blue inline-block" /> Capitale Fisico</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastrutture, macchinari, edifici, reti di trasporto, reti energetiche, telecomunicazioni. Tutto ciò che gli esseri umani hanno costruito e che serve a produrre.</p>
+        <div class="text-xs text-text-muted"><strong class="text-text">Indicatori:</strong> Formazione Lorda di Capitale Fisso (% PIL), Indice di Qualità Infrastrutturale (WEF), Logistics Performance Index (World Bank)</div>
+        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Base accademica:</strong> Adam Smith, "La ricchezza delle nazioni" (1776)</div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="human" size={20} class="text-green inline-block" /> Human Capital</h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-3">Education, health, skills, experience. The productive capacity of people. The single largest component of national wealth in advanced economies (~70%).</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Human Capital Index (World Bank), HDI education & health components (UNDP), PISA scores (OECD)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Gary Becker, "Human Capital" (1964) — <span class="text-amber">Nobel 1992</span></div>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="human" size={20} class="text-green inline-block" /> Capitale Umano</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-3">Istruzione, salute, competenze, esperienza lavorativa. La capacità produttiva delle persone. È la componente più grande della ricchezza nelle economie avanzate (~70%).</p>
+        <div class="text-xs text-text-muted"><strong class="text-text">Indicatori:</strong> Human Capital Index (World Bank), componenti istruzione e salute dell'HDI (UNDP), punteggi PISA (OCSE)</div>
+        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Base accademica:</strong> Gary Becker, "Human Capital" (1964) — <span class="text-amber">Nobel 1992</span></div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="natural" size={20} class="text-amber inline-block" /> Natural Capital</h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-3">Arable land, forests, mineral reserves, water, biodiversity, ecosystem services. Both renewable and non-renewable. The asset most distorted by GDP accounting.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Natural Capital per capita (CWON, World Bank), Forest coverage (FAO), Environmental Performance Index (Yale)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Herman Daly, "Beyond Growth" (1996); UNEP Inclusive Wealth Report</div>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="natural" size={20} class="text-amber inline-block" /> Capitale Naturale</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-3">Terra coltivabile, foreste, riserve minerarie, acqua, biodiversità, servizi ecosistemici. Risorse rinnovabili e non. L'asset più distorto dalla contabilità del PIL.</p>
+        <div class="text-xs text-text-muted"><strong class="text-text">Indicatori:</strong> Capitale Naturale pro capite (CWON, World Bank), copertura forestale (FAO), Environmental Performance Index (Yale)</div>
+        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Base accademica:</strong> Herman Daly, "Beyond Growth" (1996); UNEP Inclusive Wealth Report</div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="institutions" size={20} class="text-accent-light inline-block" /> Institutional Capital</h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-3">Rule of law, government effectiveness, corruption control, regulatory quality, political stability, accountability. The rules of the game and how well they're enforced.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Worldwide Governance Indicators — 6 dimensions (World Bank), Corruption Perceptions Index (Transparency International)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Douglass North (1990) — <span class="text-amber">Nobel 1993</span>; Acemoglu, Johnson & Robinson — <span class="text-amber">Nobel 2024</span></div>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="institutions" size={20} class="text-accent-light inline-block" /> Capitale Istituzionale</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-3">Stato di diritto, efficacia del governo, controllo della corruzione, qualità della regolazione, stabilità politica, accountability. Le regole del gioco e quanto vengono rispettate.</p>
+        <div class="text-xs text-text-muted"><strong class="text-text">Indicatori:</strong> Worldwide Governance Indicators — 6 dimensioni (World Bank), Indice di Percezione della Corruzione (Transparency International)</div>
+        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Base accademica:</strong> Douglass North (1990) — <span class="text-amber">Nobel 1993</span>; Acemoglu, Johnson & Robinson — <span class="text-amber">Nobel 2024</span></div>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5">
-        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="technology" size={20} class="text-red inline-block" /> Technology & Innovation</h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-3">R&D expenditure, patents, scientific output, total factor productivity. The "Solow residual" — the growth that can't be explained by more labor or more capital.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> R&D expenditure (% GDP), Patent applications (WIPO), TFP (Penn World Table)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Robert Solow (1956) — <span class="text-amber">Nobel 1987</span>; Paul Romer (1990) — <span class="text-amber">Nobel 2018</span></div>
+        <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="technology" size={20} class="text-red inline-block" /> Tecnologia e Innovazione</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-3">Spesa in R&S, brevetti, produzione scientifica, produttività totale dei fattori. Il "residuo di Solow": la crescita che non si spiega con più lavoro o più capitale fisico.</p>
+        <div class="text-xs text-text-muted"><strong class="text-text">Indicatori:</strong> Spesa R&S (% PIL), domande di brevetto (WIPO), TFP (Penn World Table)</div>
+        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Base accademica:</strong> Robert Solow (1956) — <span class="text-amber">Nobel 1987</span>; Paul Romer (1990) — <span class="text-amber">Nobel 2018</span></div>
       </div>
     </div>
 
     <!-- Limitations -->
     <h2 class="text-xl font-bold mb-4">Limiti</h2>
     <div class="bg-card border border-border rounded-xl p-5 mb-10 text-text-secondary text-sm leading-relaxed">
-      <p class="mb-3">Questa è un'approssimazione, non un vangelo. Honest caveats:</p>
-      <p class="mb-2"><strong class="text-text">Equal weights are a choice.</strong> Weighting all 5 dimensions equally is simple and transparent, but it's a political decision. You might argue institutions matter more than natural capital, or vice versa.</p>
-      <p class="mb-2"><strong class="text-text">Each score compresses complexity.</strong> "Institutions: 58" for Italy hides enormous variation between Northern and Southern regions, between different aspects of governance.</p>
-      <p class="mb-2"><strong class="text-text">Data availability varies.</strong> Some countries have better statistical infrastructure than others. Low-income countries may have less reliable data.</p>
-      <p><strong class="text-text">We publish the data.</strong> Download the JSON, change the weights, build your own ranking. That's the point.</p>
+      <p class="mb-3">Questa è un'approssimazione, non un vangelo. Limiti dichiarati onestamente:</p>
+      <p class="mb-2"><strong class="text-text">I pesi uguali sono una scelta.</strong> Dare lo stesso peso a tutte e 5 le dimensioni è semplice e trasparente, ma è una decisione politica. Si potrebbe argomentare che le istituzioni contano più del capitale naturale, o viceversa.</p>
+      <p class="mb-2"><strong class="text-text">Ogni punteggio comprime la complessità.</strong> "Istituzioni: 58" per l'Italia nasconde una variazione enorme tra Nord e Sud, tra diversi aspetti della governance.</p>
+      <p class="mb-2"><strong class="text-text">La disponibilità dei dati varia.</strong> Alcuni paesi hanno infrastrutture statistiche migliori di altri. I paesi a basso reddito possono avere dati meno affidabili.</p>
+      <p><strong class="text-text">Pubblichiamo i dati.</strong> Scarica il JSON, cambia i pesi, costruisci la tua classifica. Questo è il punto.</p>
     </div>
 
     <!-- Sources -->
@@ -74,23 +74,23 @@ const locale = 'it';
     <div class="space-y-2 text-sm">
       <a href="https://www.worldbank.org/en/publication/changing-wealth-of-nations" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
         <div class="font-semibold">World Bank — The Changing Wealth of Nations 2021</div>
-        <div class="text-text-muted text-xs">Wealth decomposition: produced, human, and natural capital for 146 countries</div>
+        <div class="text-text-muted text-xs">Decomposizione della ricchezza: capitale prodotto, umano e naturale per 146 paesi</div>
       </a>
       <a href="https://hdr.undp.org/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
         <div class="font-semibold">UNDP — Human Development Reports</div>
-        <div class="text-text-muted text-xs">HDI: life expectancy, education, income for 193 countries</div>
+        <div class="text-text-muted text-xs">HDI: aspettativa di vita, istruzione, reddito per 193 paesi</div>
       </a>
       <a href="https://info.worldbank.org/governance/wgi/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
         <div class="font-semibold">World Bank — Worldwide Governance Indicators</div>
-        <div class="text-text-muted text-xs">6 governance dimensions for 200+ countries since 1996</div>
+        <div class="text-text-muted text-xs">6 dimensioni di governance per 200+ paesi dal 1996</div>
       </a>
       <a href="https://www.wipo.int/global_innovation_index/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
         <div class="font-semibold">WIPO — Global Innovation Index</div>
-        <div class="text-text-muted text-xs">Innovation inputs, outputs, and efficiency for 130+ countries</div>
+        <div class="text-text-muted text-xs">Input, output ed efficienza dell'innovazione per 130+ paesi</div>
       </a>
       <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
         <div class="font-semibold">Penn World Table</div>
-        <div class="text-text-muted text-xs">Total Factor Productivity (TFP) and capital data</div>
+        <div class="text-text-muted text-xs">Produttività Totale dei Fattori (TFP) e dati sul capitale</div>
       </a>
     </div>
   </div>
