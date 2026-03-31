@@ -170,6 +170,18 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
       <span class="flex items-center gap-1.5 ml-4"><span class="w-3 h-3 rounded-sm bg-white/90"></span> GDP/cap (PPP)</span>
     </div>
 
+    <!-- Sort controls -->
+    <div class="flex flex-wrap gap-1.5 mb-4 text-xs" id="sort-controls">
+      <span class="text-text-muted py-1 mr-1">Sort by:</span>
+      <button data-sort="rgdp" class="sort-btn px-2.5 py-1 rounded-full bg-accent/15 text-accent-light border border-accent/30">rGDP</button>
+      <button data-sort="gdp" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">GDP/cap</button>
+      <button data-sort="physical" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-blue/30 hover:text-blue">Physical</button>
+      <button data-sort="human" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-green/30 hover:text-green">Human</button>
+      <button data-sort="natural" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-amber/30 hover:text-amber">Natural</button>
+      <button data-sort="institutions" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-accent-light/30 hover:text-accent-light">Institutions</button>
+      <button data-sort="technology" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-red/30 hover:text-red">Technology</button>
+    </div>
+
     <div class="bg-surface border border-border rounded-xl overflow-hidden">
       {ranked.map((c, i) => {
         const total = c.physical + c.human + c.natural + c.institutions + c.technology;
@@ -184,7 +196,9 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
         return (
           <a href={`/${locale}/country/${c.code.toLowerCase()}`}
              class="country-row flex items-center gap-3 px-4 py-3 border-b border-border/50 hover:bg-card/50 transition-colors group"
-             data-region={c.region}>
+             data-region={c.region} data-rgdp={c.realGdp} data-gdp={c.gdp_per_capita_ppp}
+             data-physical={c.physical} data-human={c.human} data-natural={c.natural}
+             data-institutions={c.institutions} data-technology={c.technology}>
             <span class="rank-cell text-text-muted font-mono text-xs w-6 text-right shrink-0">{i + 1}</span>
             <div class="flex items-center gap-2.5 w-36 sm:w-44 shrink-0">
               <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
@@ -223,6 +237,33 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
 
   <!-- ═══ SCRIPTS ═══ -->
   <script is:inline>
+    // Sort
+    document.getElementById('sort-controls')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.sort-btn');
+      if (!btn) return;
+      const key = btn.dataset.sort;
+      const container = document.querySelector('#rankings .bg-surface');
+      const rows = [...container.querySelectorAll('.country-row')];
+      rows.sort((a, b) => parseFloat(b.dataset[key]) - parseFloat(a.dataset[key]));
+      rows.forEach((r, i) => {
+        container.appendChild(r);
+        if (r.style.display !== 'none') {
+          r.querySelector('.rank-cell').textContent = i + 1;
+        }
+      });
+      // Re-rank visible rows
+      let rank = 0;
+      rows.forEach(r => {
+        if (r.style.display !== 'none') { rank++; r.querySelector('.rank-cell').textContent = rank; }
+      });
+      // Update button styles
+      container.closest('section').querySelectorAll('.sort-btn').forEach(b => {
+        b.className = b === btn
+          ? 'sort-btn px-2.5 py-1 rounded-full bg-accent/15 text-accent-light border border-accent/30'
+          : 'sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-accent/30';
+      });
+    });
+
     // Region filter
     document.getElementById('region-filters')?.addEventListener('click', (e) => {
       const btn = e.target.closest('button');

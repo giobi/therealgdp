@@ -6,57 +6,171 @@ const locale = 'en';
 ---
 
 <Base title="Methodology" locale={locale}>
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
     <h1 class="text-3xl font-black tracking-tight mb-2">Methodology</h1>
-    <p class="text-text-secondary text-lg mb-10">How we calculate the Real GDP score and where the data comes from.</p>
+    <p class="text-text-secondary text-lg mb-10">How we calculate the Real GDP score, where the data comes from, and how to verify it yourself.</p>
 
     <!-- Formula -->
     <div class="bg-surface border border-border rounded-xl p-6 mb-10">
       <p class="text-sm text-text-muted uppercase tracking-wider font-semibold mb-3">Formula</p>
       <p class="text-xl font-mono font-bold text-accent-light text-center py-4">
-        Real GDP = (Physical + Human + Natural + Institutions + Technology) / 5
+        rGDP = (Physical + Human + Natural + Institutions + Technology) / 5
       </p>
-      <p class="text-text-secondary text-sm text-center">Each dimension is normalized 0-100. Equal weights.</p>
+      <p class="text-text-secondary text-sm text-center">Each dimension is normalized 0-100. Equal weights. The raw data is public — you can verify every number.</p>
     </div>
 
     <!-- Dimensions -->
     <h2 class="text-xl font-bold mb-4">The 5 Dimensions</h2>
     
     <div class="space-y-6 mb-10">
+
+      <!-- PHYSICAL -->
       <div class="bg-surface border border-border rounded-xl p-5">
         <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="physical" size={20} class="text-blue inline-block" /> Physical Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastructure, machinery, buildings, transport networks, energy grids, telecoms. Everything humans have built that enables production.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Gross Fixed Capital Formation (% GDP), Infrastructure Quality Index (WEF), Logistics Performance Index (World Bank)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Adam Smith, "The Wealth of Nations" (1776)</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Indicators:</strong> Gross Fixed Capital Formation (% GDP), Infrastructure Quality Index, Logistics Performance Index</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Academic basis:</strong> Adam Smith, "The Wealth of Nations" (1776)</div>
+        <div class="border-t border-border/50 pt-3 mt-3">
+          <p class="text-xs font-semibold text-text mb-2">Data sources (direct links to datasets):</p>
+          <div class="space-y-1.5">
+            <a href="https://data.worldbank.org/indicator/NE.GDI.FTOT.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Gross Fixed Capital Formation (% of GDP) — all countries, annual
+            </a>
+            <a href="https://lpi.worldbank.org/international/scorecard" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Logistics Performance Index (LPI) — 160 countries
+            </a>
+            <a href="https://data.worldbank.org/indicator/IS.RRS.TOTL.KM" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Rail lines (total route-km) — infrastructure proxy
+            </a>
+            <a href="https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Access to electricity (% of population)
+            </a>
+            <a href="https://data.worldbank.org/indicator/IT.NET.BBND.P2" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Fixed broadband subscriptions (per 100 people)
+            </a>
+          </div>
+        </div>
       </div>
 
+      <!-- HUMAN -->
       <div class="bg-surface border border-border rounded-xl p-5">
         <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="human" size={20} class="text-green inline-block" /> Human Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Education, health, skills, experience. The productive capacity of people. The single largest component of national wealth in advanced economies (~70%).</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Human Capital Index (World Bank), HDI education & health components (UNDP), PISA scores (OECD)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Gary Becker, "Human Capital" (1964) — <span class="text-amber">Nobel 1992</span></div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Indicators:</strong> Human Capital Index, HDI education & health components, PISA scores, life expectancy</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Academic basis:</strong> Gary Becker, "Human Capital" (1964) — <span class="text-amber">Nobel 1992</span></div>
+        <div class="border-t border-border/50 pt-3 mt-3">
+          <p class="text-xs font-semibold text-text mb-2">Data sources (direct links to datasets):</p>
+          <div class="space-y-1.5">
+            <a href="https://data.worldbank.org/indicator/HD.HCI.OVRL" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Human Capital Index (HCI) — 174 countries
+            </a>
+            <a href="https://hdr.undp.org/data-center/human-development-index" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">UNDP</span> Human Development Index (HDI) — 193 countries, downloadable CSV
+            </a>
+            <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Life expectancy at birth — all countries, annual
+            </a>
+            <a href="https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Government expenditure on education (% of GDP)
+            </a>
+            <a href="https://pisadataexplorer.oecd.org/" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">OECD</span> PISA scores — math, reading, science for 80+ countries
+            </a>
+          </div>
+        </div>
       </div>
 
+      <!-- NATURAL -->
       <div class="bg-surface border border-border rounded-xl p-5">
         <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="natural" size={20} class="text-amber inline-block" /> Natural Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Arable land, forests, mineral reserves, water, biodiversity, ecosystem services. Both renewable and non-renewable. The asset most distorted by GDP accounting.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Natural Capital per capita (CWON, World Bank), Forest coverage (FAO), Environmental Performance Index (Yale)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Herman Daly, "Beyond Growth" (1996); UNEP Inclusive Wealth Report</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Indicators:</strong> Natural capital per capita (CWON), forest coverage, Environmental Performance Index (EPI)</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Academic basis:</strong> Herman Daly, "Beyond Growth" (1996); UNEP Inclusive Wealth Report</div>
+        <div class="border-t border-border/50 pt-3 mt-3">
+          <p class="text-xs font-semibold text-text mb-2">Data sources (direct links to datasets):</p>
+          <div class="space-y-1.5">
+            <a href="https://databank.worldbank.org/source/wealth-accounts" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Wealth Accounts (CWON) — natural capital per country, downloadable
+            </a>
+            <a href="https://epi.yale.edu/downloads" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">Yale/Columbia</span> Environmental Performance Index (EPI) — 180 countries, CSV download
+            </a>
+            <a href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Forest area (% of land area) — all countries
+            </a>
+            <a href="https://data.worldbank.org/indicator/ER.H2O.FWTL.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Renewable freshwater resources per capita
+            </a>
+            <a href="https://data.worldbank.org/indicator/AG.LND.ARBL.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Arable land (% of land area)
+            </a>
+          </div>
+        </div>
       </div>
 
+      <!-- INSTITUTIONS -->
       <div class="bg-surface border border-border rounded-xl p-5">
         <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="institutions" size={20} class="text-accent-light inline-block" /> Institutional Capital</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">Rule of law, government effectiveness, corruption control, regulatory quality, political stability, accountability. The rules of the game and how well they're enforced.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> Worldwide Governance Indicators — 6 dimensions (World Bank), Corruption Perceptions Index (Transparency International)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Douglass North (1990) — <span class="text-amber">Nobel 1993</span>; Acemoglu, Johnson & Robinson — <span class="text-amber">Nobel 2024</span></div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Indicators:</strong> Worldwide Governance Indicators (6 dimensions), Corruption Perceptions Index</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Academic basis:</strong> Douglass North (1990) — <span class="text-amber">Nobel 1993</span>; Acemoglu, Johnson & Robinson — <span class="text-amber">Nobel 2024</span></div>
+        <div class="border-t border-border/50 pt-3 mt-3">
+          <p class="text-xs font-semibold text-text mb-2">Data sources (direct links to datasets):</p>
+          <div class="space-y-1.5">
+            <a href="https://info.worldbank.org/governance/wgi/" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Worldwide Governance Indicators (WGI) — 6 dimensions, 200+ countries, Excel download
+            </a>
+            <a href="https://databank.worldbank.org/source/worldwide-governance-indicators" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> WGI DataBank — query and download any indicator/country/year
+            </a>
+            <a href="https://www.transparency.org/en/cpi" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">Transparency Intl</span> Corruption Perceptions Index (CPI) — 180 countries, annual
+            </a>
+            <a href="https://freedomhouse.org/countries/freedom-world/scores" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">Freedom House</span> Freedom in the World scores — political rights & civil liberties
+            </a>
+            <a href="https://data.worldbank.org/indicator/IC.BUS.EASE.XQ" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Ease of Doing Business score
+            </a>
+          </div>
+        </div>
       </div>
 
+      <!-- TECHNOLOGY -->
       <div class="bg-surface border border-border rounded-xl p-5">
         <h3 class="font-bold flex items-center gap-2 mb-2"><Icon name="technology" size={20} class="text-red inline-block" /> Technology & Innovation</h3>
         <p class="text-text-secondary text-sm leading-relaxed mb-3">R&D expenditure, patents, scientific output, total factor productivity. The "Solow residual" — the growth that can't be explained by more labor or more capital.</p>
-        <div class="text-xs text-text-muted"><strong class="text-text">Indicators:</strong> R&D expenditure (% GDP), Patent applications (WIPO), TFP (Penn World Table)</div>
-        <div class="text-xs text-text-muted mt-1"><strong class="text-text">Academic basis:</strong> Robert Solow (1956) — <span class="text-amber">Nobel 1987</span>; Paul Romer (1990) — <span class="text-amber">Nobel 2018</span></div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Indicators:</strong> R&D expenditure (% GDP), patent applications, Global Innovation Index, TFP</div>
+        <div class="text-xs text-text-muted mb-3"><strong class="text-text">Academic basis:</strong> Robert Solow (1956) — <span class="text-amber">Nobel 1987</span>; Paul Romer (1990) — <span class="text-amber">Nobel 2018</span></div>
+        <div class="border-t border-border/50 pt-3 mt-3">
+          <p class="text-xs font-semibold text-text mb-2">Data sources (direct links to datasets):</p>
+          <div class="space-y-1.5">
+            <a href="https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> R&D expenditure (% of GDP) — all countries
+            </a>
+            <a href="https://www.wipo.int/global_innovation_index/en/" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">WIPO</span> Global Innovation Index (GII) — 130+ countries, full report + data
+            </a>
+            <a href="https://data.worldbank.org/indicator/IP.PAT.RESD" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Patent applications (residents) — all countries, annual
+            </a>
+            <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">U. Groningen</span> Penn World Table 10.01 — TFP, capital stock, 183 countries
+            </a>
+            <a href="https://data.worldbank.org/indicator/IP.JRN.ARTC.SC" target="_blank" class="flex items-center gap-2 text-xs text-accent-light hover:underline">
+              <span class="text-text-muted">World Bank</span> Scientific and technical journal articles — research output
+            </a>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- How scores are computed -->
+    <h2 class="text-xl font-bold mb-4">How we compute the scores</h2>
+    <div class="bg-surface border border-border rounded-xl p-5 mb-10 text-text-secondary text-sm leading-relaxed">
+      <p class="mb-3">For each dimension, we collect multiple indicators from the sources above. Each indicator is <strong class="text-text">min-max normalized</strong> to a 0-100 scale using the global min and max across all countries. The dimension score is a weighted average of its normalized indicators.</p>
+      <p class="mb-3">For example, the Physical Capital score combines: Gross Fixed Capital Formation (40%), Logistics Performance Index (30%), broadband penetration (15%), and electricity access (15%). Countries with missing data for an indicator are scored using the remaining indicators with re-normalized weights.</p>
+      <p>The final rGDP is the simple (unweighted) average of the 5 dimension scores.</p>
     </div>
 
     <!-- Limitations -->
@@ -66,10 +180,17 @@ const locale = 'en';
       <p class="mb-2"><strong class="text-text">Equal weights are a choice.</strong> Weighting all 5 dimensions equally is simple and transparent, but it's a political decision. You might argue institutions matter more than natural capital, or vice versa.</p>
       <p class="mb-2"><strong class="text-text">Each score compresses complexity.</strong> "Institutions: 58" for Italy hides enormous variation between Northern and Southern regions, between different aspects of governance.</p>
       <p class="mb-2"><strong class="text-text">Data availability varies.</strong> Some countries have better statistical infrastructure than others. Low-income countries may have less reliable data.</p>
-      <p><strong class="text-text">We publish the data.</strong> Download the JSON, change the weights, build your own ranking. That's the point.</p>
+      <p><strong class="text-text">We publish the data.</strong> <a href="https://github.com/giobi/therealgdp/blob/main/src/data/countries.json" target="_blank" class="text-accent-light hover:underline">Download the JSON</a>, change the weights, build your own ranking. That's the point.</p>
     </div>
 
-    <!-- Sources -->
+    <!-- GDP data source -->
+    <h2 class="text-xl font-bold mb-4">GDP per capita (PPP)</h2>
+    <div class="bg-surface border border-border rounded-xl p-5 mb-10 text-text-secondary text-sm leading-relaxed">
+      <p class="mb-3">We use <strong class="text-text">GDP per capita in PPP (Purchasing Power Parity)</strong> rather than nominal GDP. PPP adjusts for the cost of living: $1 buys a lot more in Vietnam than in Switzerland. This gives a much fairer comparison of actual living standards.</p>
+      <p>Source: <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD" target="_blank" class="text-accent-light hover:underline">World Bank — GDP per capita, PPP (current international $)</a></p>
+    </div>
+
+    <!-- Primary Sources -->
     <h2 class="text-xl font-bold mb-4">Primary Sources</h2>
     <div class="space-y-2 text-sm">
       <a href="https://www.worldbank.org/en/publication/changing-wealth-of-nations" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
@@ -89,8 +210,12 @@ const locale = 'en';
         <div class="text-text-muted text-xs">Innovation inputs, outputs, and efficiency for 130+ countries</div>
       </a>
       <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
-        <div class="font-semibold">Penn World Table</div>
-        <div class="text-text-muted text-xs">Total Factor Productivity (TFP) and capital data</div>
+        <div class="font-semibold">Penn World Table 10.01</div>
+        <div class="text-text-muted text-xs">Total Factor Productivity (TFP), capital stock, 183 countries</div>
+      </a>
+      <a href="https://epi.yale.edu/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
+        <div class="font-semibold">Yale — Environmental Performance Index</div>
+        <div class="text-text-muted text-xs">Environmental health and ecosystem vitality for 180 countries</div>
       </a>
     </div>
   </div>
