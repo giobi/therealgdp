@@ -5,104 +5,407 @@ import { t } from '@/i18n';
 const locale = 'en';
 ---
 
-<Base title={t(locale, 'explain.title')} locale={locale}>
+<Base title="What is the Real GDP?" locale={locale}>
   <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
-    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">{t(locale, 'explain.sub')}</p>
-    <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-12">{t(locale, 'explain.title')}</h1>
 
-    <!-- Section 1: The problem -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
-        <span class="w-8 h-8 rounded-full bg-red/15 text-red flex items-center justify-center text-sm font-black">1</span>
-        {t(locale, 'explain.s1_title')}
-      </h2>
-      <div class="space-y-4 text-text-secondary leading-relaxed">
-        <p>{t(locale, 'explain.s1_p1')}</p>
-        <div class="bg-card border border-border rounded-xl p-5 text-sm italic">
-          <p>{t(locale, 'explain.s1_p2')}</p>
+    <!-- Header -->
+    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">No economics degree required</p>
+    <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-3">What is the Real GDP?</h1>
+    <p class="text-text-secondary text-lg mb-4">A long, honest explanation of why GDP is broken and what we should measure instead.</p>
+
+    <!-- TOC -->
+    <nav class="bg-surface border border-border rounded-xl p-5 mb-12 text-sm">
+      <ol class="space-y-1.5 text-text-secondary list-decimal list-inside">
+        <li><a href="#island" class="hover:text-accent-light transition-colors">The island: a thought experiment</a></li>
+        <li><a href="#gdp-problem" class="hover:text-accent-light transition-colors">Why GDP is a terrible proxy</a></li>
+        <li><a href="#dimensions" class="hover:text-accent-light transition-colors">The 5 dimensions of real wealth</a></li>
+        <li><a href="#numbers" class="hover:text-accent-light transition-colors">The numbers: global wealth composition</a></li>
+        <li><a href="#how" class="hover:text-accent-light transition-colors">How we actually measure them</a></li>
+        <li><a href="#alternatives" class="hover:text-accent-light transition-colors">Who else has tried</a></li>
+        <li><a href="#paradoxes" class="hover:text-accent-light transition-colors">When GDP lies: real-world paradoxes</a></li>
+        <li><a href="#sources" class="hover:text-accent-light transition-colors">Academic sources</a></li>
+      </ol>
+    </nav>
+
+    <!-- ═══ 1. THE ISLAND ═══ -->
+    <section class="mb-14" id="island">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Starting point</p>
+      <h2 class="text-2xl font-bold mb-4">The island: a thought experiment</h2>
+
+      <div class="bg-card border border-border rounded-xl p-6 mb-5 text-text-secondary leading-relaxed">
+        <p class="mb-3">We're on an island. I grow apples, you grow pears. Instead of bartering directly, we invent a <strong class="text-text">third thing: money</strong>. Apples cost X, pears cost Y.</p>
+        <p class="mb-3">Fewer apples means higher prices. If pears are better and cover what apples do, apples die out.</p>
+        <p>But how do you measure the island's wealth? <strong class="text-text">Not by the money in circulation</strong> — that's an arbitrary number meant to represent real resources.</p>
+      </div>
+
+      <div class="text-text-secondary leading-relaxed space-y-4">
+        <p>This thought experiment leads straight to a fundamental distinction in economics: the difference between <strong class="text-text">flow</strong> and <strong class="text-text">stock</strong>.</p>
+        <p>Money measures the flow — how much circulates. But the island's real wealth is the <strong class="text-text">stock</strong>: the cultivated land, the fishing boats, the inhabitants' skills, the rules they've agreed to live by, the farming techniques they've invented.</p>
+        <p>If you print twice as much money on the island, you don't get one more apple.</p>
+      </div>
+    </section>
+
+    <!-- ═══ 2. GDP PROBLEM ═══ -->
+    <section class="mb-14" id="gdp-problem">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The problem</p>
+      <h2 class="text-2xl font-bold mb-4">Why GDP is a terrible proxy</h2>
+
+      <p class="text-text-secondary leading-relaxed mb-5"><strong class="text-text">GDP (Gross Domestic Product)</strong> measures the total value of goods and services produced in a country in a year. It's a measure of <strong class="text-text">activity</strong>, not <strong class="text-text">health</strong>.</p>
+
+      <!-- Stat grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden mb-5">
+        <div class="bg-surface p-4 text-center">
+          <div class="text-2xl font-black text-accent-light">1934</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Invented</div>
+        </div>
+        <div class="bg-surface p-4 text-center">
+          <div class="text-2xl font-black text-accent-light">Kuznets</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Inventor</div>
+        </div>
+        <div class="bg-surface p-4 text-center">
+          <div class="text-2xl font-black text-accent-light">1 year</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Time horizon</div>
+        </div>
+        <div class="bg-surface p-4 text-center">
+          <div class="text-2xl font-black text-accent-light">Flow</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Type</div>
+        </div>
+      </div>
+
+      <!-- Kuznets quote -->
+      <div class="bg-card border-l-4 border-amber rounded-r-xl p-5 mb-6">
+        <p class="text-text italic leading-relaxed">"The welfare of a nation can scarcely be inferred from a measurement of national income." — <strong class="text-amber">Simon Kuznets, 1934</strong>, the inventor of GDP himself, in the report to the US Congress where he proposed it.</p>
+      </div>
+
+      <div class="text-text-secondary leading-relaxed space-y-4">
+        <p>GDP <strong class="text-text">counts</strong> things that aren't wellbeing:</p>
+        <ul class="list-disc list-inside space-y-1.5 ml-2">
+          <li><strong class="text-text">A car accident</strong> increases GDP: ambulance, hospital, car repair, lawyers</li>
+          <li><strong class="text-text">Pollution</strong> increases GDP: the factory produces (GDP +), then you need doctors and cleanup (GDP ++)</li>
+          <li><strong class="text-text">A hurricane</strong> increases GDP: reconstruction is economic activity</li>
+        </ul>
+        <p>GDP <strong class="text-text">doesn't count</strong> things that are wellbeing:</p>
+        <ul class="list-disc list-inside space-y-1.5 ml-2">
+          <li>Domestic and care work (parents, volunteers)</li>
+          <li>The natural environment (forests, clean air, biodiversity)</li>
+          <li>Free time and quality of life</li>
+          <li>Distribution: a sky-high GDP concentrated in 10 people doesn't make a country rich</li>
+        </ul>
+
+        <div class="bg-surface border border-border rounded-xl p-5 text-sm">
+          <p class="text-text font-semibold mb-1">The pharmacy analogy</p>
+          <p>GDP is like measuring your health by how much you spend at the pharmacy. Spending more doesn't mean you're healthier — it might mean the opposite. Real health is your muscle mass, cardiovascular fitness, mental wellbeing, nutrition. That's what we need to measure for countries too.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: What to measure -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
-        <span class="w-8 h-8 rounded-full bg-green/15 text-green flex items-center justify-center text-sm font-black">2</span>
-        {t(locale, 'explain.s2_title')}
-      </h2>
-      <p class="text-text-secondary leading-relaxed mb-6">{t(locale, 'explain.s2_p1')}</p>
+    <!-- ═══ 3. THE 5 DIMENSIONS ═══ -->
+    <section class="mb-14" id="dimensions">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The framework</p>
+      <h2 class="text-2xl font-bold mb-4">The 5 dimensions of real wealth</h2>
+
+      <div class="text-text-secondary leading-relaxed space-y-4 mb-6">
+        <p>There's no single official definition of "a country's wealth". But the economic literature converges on <strong class="text-text">five categories of capital</strong> that, together, give a much more honest picture than GDP.</p>
+        <p>These aren't concepts invented by a chatbot: each dimension has decades of academic research and at least one Nobel Prize in Economics behind it.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Physical -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue/15 flex items-center justify-center shrink-0"><Icon name="physical" size={22} class="text-blue" /></div>
+            <h3 class="font-bold text-blue">1. Physical Capital (Produced)</h3>
+          </div>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastructure, machinery, buildings, roads, electrical and telecommunications networks, ports, airports. Everything humans have <strong class="text-text">built</strong> that enables the production of other things.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Adam Smith, 1776</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Measurable: national inventories</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~27% of global wealth</span>
+          </div>
+        </div>
+
+        <!-- Human -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-green/15 flex items-center justify-center shrink-0"><Icon name="human" size={22} class="text-green" /></div>
+            <h3 class="font-bold text-green">2. Human Capital</h3>
+          </div>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Education, skills, health, work experience of the population. The productive capacity of <strong class="text-text">people</strong>. It's the single largest component of wealth in advanced economies.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Gary Becker</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1992</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~64% of global wealth</span>
+          </div>
+        </div>
+
+        <!-- Natural -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber/15 flex items-center justify-center shrink-0"><Icon name="natural" size={22} class="text-amber" /></div>
+            <h3 class="font-bold text-amber">3. Natural Capital</h3>
+          </div>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Natural resources: farmland, forests, mineral reserves, water, biodiversity, ecosystem services (pollination, air and water purification). Includes both <strong class="text-text">renewable and non-renewable</strong> resources.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Herman Daly, ecological economics</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~9% of global wealth</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Critical in low-income countries</span>
+          </div>
+        </div>
+
+        <!-- Institutions -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0"><Icon name="institutions" size={22} class="text-accent-light" /></div>
+            <h3 class="font-bold text-accent-light">4. Institutional Capital</h3>
+          </div>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Rule of law, judicial system, property protection, bureaucratic efficiency, corruption levels, social trust, political stability. The <strong class="text-text">rules of the game</strong> and how well they're enforced.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Douglass North</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1993</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Acemoglu, Johnson & Robinson</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 2024</span>
+          </div>
+        </div>
+
+        <!-- Technology -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-red/15 flex items-center justify-center shrink-0"><Icon name="technology" size={22} class="text-red" /></div>
+            <h3 class="font-bold text-red">5. Technology & Know-how</h3>
+          </div>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Innovation, patents, production processes, scientific research. The "Solow residual": the part of economic growth that <strong class="text-text">can't be explained</strong> by more labour or more physical capital. It's the multiplier of everything else.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Robert Solow</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1987</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Paul Romer</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 2018</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 4. NUMBERS ═══ -->
+    <section class="mb-14" id="numbers">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The data</p>
+      <h2 class="text-2xl font-bold mb-4">Global wealth composition</h2>
+
+      <div class="text-text-secondary leading-relaxed space-y-4 mb-6">
+        <p>The <strong class="text-text">World Bank</strong> publishes <em>The Changing Wealth of Nations</em> (editions 2006, 2011, 2018, 2021) — the most ambitious attempt to measure total wealth by decomposing it into capitals. It covers 146 countries.</p>
+        <p>The most surprising finding: <strong class="text-text">human capital is the dominant component</strong>. Not factories, not oil — people.</p>
+      </div>
+
+      <!-- Visual wealth bars -->
+      <div class="space-y-4 mb-6">
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-sm font-bold mb-3">High-income countries (OECD)</p>
+          <div class="h-6 rounded-full overflow-hidden flex">
+            <div class="bg-blue h-full" style="width: 27%" title="Physical 27%"></div>
+            <div class="bg-green h-full" style="width: 64%" title="Human 64%"></div>
+            <div class="bg-amber h-full" style="width: 3%" title="Natural 3%"></div>
+            <div class="bg-accent-light h-full" style="width: 4%" title="Institutions (included in others)"></div>
+            <div class="bg-red h-full" style="width: 2%" title="Technology (included in others)"></div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-2 text-xs text-text-muted">
+            <span><span class="text-blue">■</span> Physical 27%</span>
+            <span><span class="text-green">■</span> Human 64%</span>
+            <span><span class="text-amber">■</span> Natural 3%</span>
+            <span><span class="text-text-muted">■</span> Other 6%</span>
+          </div>
+        </div>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-sm font-bold mb-3">Low-income countries</p>
+          <div class="h-6 rounded-full overflow-hidden flex">
+            <div class="bg-blue h-full" style="width: 14%" title="Physical 14%"></div>
+            <div class="bg-green h-full" style="width: 41%" title="Human 41%"></div>
+            <div class="bg-amber h-full" style="width: 36%" title="Natural 36%"></div>
+            <div class="bg-accent-light h-full" style="width: 5%" title="Institutions"></div>
+            <div class="bg-red h-full" style="width: 4%" title="Technology"></div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-2 text-xs text-text-muted">
+            <span><span class="text-blue">■</span> Physical 14%</span>
+            <span><span class="text-green">■</span> Human 41%</span>
+            <span><span class="text-amber">■</span> Natural 36%</span>
+            <span><span class="text-text-muted">■</span> Other 9%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-card border-l-4 border-green rounded-r-xl p-5">
+        <p class="text-text leading-relaxed">The fact that <strong class="text-green">human capital</strong> accounts for ~64% of global wealth has enormous implications: investing in education and health isn't "social spending" — it's <strong>investment in a country's primary productive asset</strong>.</p>
+      </div>
+    </section>
+
+    <!-- ═══ 5. HOW WE MEASURE ═══ -->
+    <section class="mb-14" id="how">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Method</p>
+      <h2 class="text-2xl font-bold mb-4">How we actually measure them</h2>
+
+      <p class="text-text-secondary leading-relaxed mb-5">Each dimension has its own indicators and reference organizations. Here's the map.</p>
+
+      <div class="bg-surface border border-border rounded-xl overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
+              <th class="text-left px-4 py-3">Dimension</th>
+              <th class="text-left px-4 py-3">Key indicators</th>
+              <th class="text-left px-4 py-3">Who produces them</th>
+            </tr>
+          </thead>
+          <tbody class="text-text-secondary">
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Physical</td><td class="px-4 py-3">Gross Fixed Capital Formation, national asset inventories</td><td class="px-4 py-3">National statistics offices, World Bank</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Human</td><td class="px-4 py-3">Years of education, life expectancy, expected earnings, skills (PISA, PIAAC)</td><td class="px-4 py-3">UNDP (HDI), World Bank (HCI), OECD</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Natural</td><td class="px-4 py-3">Mineral/energy reserves, farmland, forest cover, ecosystem services</td><td class="px-4 py-3">World Bank (CWON), UNEP, FAO</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Institutions</td><td class="px-4 py-3">6 WGI indicators: Rule of law, Government effectiveness, Corruption control, Stability, Regulatory quality, Voice</td><td class="px-4 py-3">World Bank (WGI), Transparency International</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-text">Technology</td><td class="px-4 py-3">R&D spending (% GDP), patents, scientific publications, TFP</td><td class="px-4 py-3">OECD, WIPO, UNESCO, Penn World Table</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-surface border border-border rounded-xl p-5 mt-5">
+        <p class="text-sm font-bold mb-2">Our formula</p>
+        <p class="text-lg font-mono font-bold text-accent-light text-center py-3">rGDP = (Physical + Human + Natural + Institutions + Technology) / 5</p>
+        <p class="text-text-secondary text-sm text-center">Each dimension normalized 0-100. Equal weights. That's it.</p>
+      </div>
+    </section>
+
+    <!-- ═══ 6. ALTERNATIVES ═══ -->
+    <section class="mb-14" id="alternatives">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Who else has tried</p>
+      <h2 class="text-2xl font-bold mb-4">Alternatives to GDP</h2>
+
+      <p class="text-text-secondary leading-relaxed mb-5">GDP will never be "replaced" — it's too convenient, too entrenched, too simple. But serious attempts to supplement or complement it exist.</p>
+
       <div class="space-y-3">
-        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
-          <Icon name="physical" size={24} class="text-blue shrink-0 mt-0.5" />
-          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_physical')}</p>
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <h3 class="font-bold mb-1">HDI — Human Development Index</h3>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNDP, since 1990.</strong> Combines: life expectancy, years of education, per capita income. Designed by <strong>Mahbub ul Haq</strong> with <strong>Amartya Sen</strong> <span class="text-amber font-semibold">(Nobel 1998)</span>. The best-known and most-used alternative.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">193 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Updated annually</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Scale 0-1</span></div>
         </div>
-        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
-          <Icon name="human" size={24} class="text-green shrink-0 mt-0.5" />
-          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_human')}</p>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <h3 class="font-bold mb-1">CWON — Changing Wealth of Nations</h3>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">World Bank, editions 2006/2011/2018/2021.</strong> Decomposes total wealth into produced, natural, human, and net foreign assets. The most ambitious attempt to measure the <strong>stock</strong> (not the flow) of wealth.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">146 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Total wealth in $</span></div>
         </div>
-        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
-          <Icon name="natural" size={24} class="text-amber shrink-0 mt-0.5" />
-          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_natural')}</p>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <h3 class="font-bold mb-1">IWR — Inclusive Wealth Report</h3>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNEP, since 2012.</strong> Includes produced, human and natural capital in a single number. Tries to measure <strong>sustainability</strong>: a country whose total wealth is declining is consuming its own future.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">140 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Sustainability focus</span></div>
         </div>
-        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
-          <Icon name="institutions" size={24} class="text-accent-light shrink-0 mt-0.5" />
-          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_institutions')}</p>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <h3 class="font-bold mb-1">Better Life Index</h3>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">OECD.</strong> 11 dimensions: housing, income, jobs, community, education, environment, civic engagement, health, life satisfaction, safety, work-life balance. <strong>Interactive:</strong> users choose how to weight each dimension.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">38 OECD countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Customizable</span></div>
         </div>
-        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
-          <Icon name="technology" size={24} class="text-red shrink-0 mt-0.5" />
-          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_technology')}</p>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <h3 class="font-bold mb-1">GNH — Gross National Happiness</h3>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Bhutan, since 1972.</strong> The most radical case: Bhutan officially replaced GDP with a "gross national happiness" index. Includes psychological wellbeing, health, time use, cultural vitality, good governance, ecology.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Bhutan only</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">9 dimensions</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Controversial but influential</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: How we score -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
-        <span class="w-8 h-8 rounded-full bg-blue/15 text-blue flex items-center justify-center text-sm font-black">3</span>
-        {t(locale, 'explain.s3_title')}
-      </h2>
-      <div class="space-y-4 text-text-secondary leading-relaxed">
-        <p>{t(locale, 'explain.s3_p1')}</p>
-        <div class="bg-surface border border-border rounded-xl p-6 text-center">
-          <p class="text-lg font-mono font-bold text-accent-light">
-            Real GDP = (Physical + Human + Natural + Institutions + Technology) / 5
-          </p>
+    <!-- ═══ 7. PARADOXES ═══ -->
+    <section class="mb-14" id="paradoxes">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Paradoxes</p>
+      <h2 class="text-2xl font-bold mb-4">When GDP lies</h2>
+
+      <p class="text-text-secondary leading-relaxed mb-5">Some real-world cases where GDP tells a completely different story from reality.</p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-2xl mb-2">&#x1F1F3;&#x1F1EC;</p>
+          <h3 class="font-bold mb-2">The resource curse</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Oil-rich countries (Nigeria, Venezuela) with seemingly decent GDP per capita but populations in misery. GDP rises when you extract oil, but <strong class="text-text">natural capital</strong> drops, <strong class="text-text">institutions</strong> corrode, and <strong class="text-text">human capital</strong> doesn't grow. Net result: the country gets poorer while "growing".</p>
         </div>
-        <p>{t(locale, 'explain.s3_p2')}</p>
-      </div>
-    </section>
 
-    <!-- Section 4: Why it matters -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
-        <span class="w-8 h-8 rounded-full bg-amber/15 text-amber flex items-center justify-center text-sm font-black">4</span>
-        {t(locale, 'explain.s4_title')}
-      </h2>
-      <div class="space-y-4 text-text-secondary leading-relaxed">
-        <p>{t(locale, 'explain.s4_p1')}</p>
-        <p>{t(locale, 'explain.s4_p2')}</p>
-        <div class="bg-card border border-amber/20 rounded-xl p-5 text-sm">
-          <p class="text-amber font-semibold">{t(locale, 'explain.s4_p3')}</p>
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-2xl mb-2">&#x1F1EF;&#x1F1F5;</p>
+          <h3 class="font-bold mb-2">"Stagnant" Japan</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Japanese GDP has barely moved for 30 years. Headlines call them "lost decades". But: quality of life is outstanding, crime is near-zero, health excellent, life expectancy record-breaking, infrastructure pristine. GDP captures none of this.</p>
+        </div>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-2xl mb-2">&#x1F1EE;&#x1F1EA;</p>
+          <h3 class="font-bold mb-2">Ireland's leprechaun GDP</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">In 2015, Irish GDP grew 26% in a single year. Reason: tech multinationals shifted intellectual property to their Irish books for tax reasons. No Irish person woke up 26% richer. Paul Krugman coined the term "Leprechaun Economics" for this distortion.</p>
+        </div>
+
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-2xl mb-2">&#x1F310;</p>
+          <h3 class="font-bold mb-2">The invisible digital economy</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Wikipedia, open source, Google Maps, WhatsApp: services that create enormous value but that GDP struggles to capture because the consumer price is zero or near-zero. GDP measures monetary transactions — if there's no price, it doesn't exist.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Caveats -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
-        <span class="w-8 h-8 rounded-full bg-accent/15 text-accent-light flex items-center justify-center text-sm font-black">5</span>
-        {t(locale, 'explain.s5_title')}
-      </h2>
-      <div class="space-y-4 text-text-secondary leading-relaxed">
-        <p>{t(locale, 'explain.s5_p1')}</p>
-        <p>{t(locale, 'explain.s5_p2')}</p>
+    <!-- ═══ 8. SOURCES ═══ -->
+    <section class="mb-14" id="sources">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Academic sources</p>
+      <h2 class="text-2xl font-bold mb-4">Where all this comes from</h2>
+
+      <p class="text-text-secondary leading-relaxed mb-5">Full transparency: here are the primary sources behind the concepts and data. <strong class="text-text">Nothing is made up</strong>, but the synthesis and organization is ours.</p>
+
+      <div class="bg-surface border border-border rounded-xl overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
+              <th class="text-left px-4 py-3">Author / Org</th>
+              <th class="text-left px-4 py-3">Work</th>
+              <th class="text-left px-4 py-3">Concept</th>
+            </tr>
+          </thead>
+          <tbody class="text-text-secondary">
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Simon Kuznets</td><td class="px-4 py-2.5">"National Income, 1929-1932" (1934)</td><td class="px-4 py-2.5">Invented GDP, first to say it doesn't measure wellbeing</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Robert Solow <span class="text-amber">Nobel 1987</span></td><td class="px-4 py-2.5">"A Contribution to the Theory of Economic Growth" (1956)</td><td class="px-4 py-2.5">Growth model, Solow residual (technology as driver)</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Gary Becker <span class="text-amber">Nobel 1992</span></td><td class="px-4 py-2.5">"Human Capital" (1964)</td><td class="px-4 py-2.5">Human capital: education and health as productive investment</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Douglass North <span class="text-amber">Nobel 1993</span></td><td class="px-4 py-2.5">"Institutions, Institutional Change..." (1990)</td><td class="px-4 py-2.5">Institutions as fundamental determinant of performance</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Amartya Sen <span class="text-amber">Nobel 1998</span></td><td class="px-4 py-2.5">"Development as Freedom" (1999)</td><td class="px-4 py-2.5">Development as expansion of freedoms, not GDP growth</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Paul Romer <span class="text-amber">Nobel 2018</span></td><td class="px-4 py-2.5">"Endogenous Technological Change" (1990)</td><td class="px-4 py-2.5">Ideas as non-rival growth driver</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Acemoglu, Johnson & Robinson <span class="text-amber">Nobel 2024</span></td><td class="px-4 py-2.5">"Why Nations Fail" (2012)</td><td class="px-4 py-2.5">Why inclusive institutions create prosperity</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">"The Changing Wealth of Nations" (2021)</td><td class="px-4 py-2.5">Wealth decomposition: produced, human, natural capital</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNDP</td><td class="px-4 py-2.5">Human Development Report (annual, since 1990)</td><td class="px-4 py-2.5">HDI: composite health + education + income index</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">Worldwide Governance Indicators (WGI)</td><td class="px-4 py-2.5">6 institutional quality indicators, 200+ countries</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNEP</td><td class="px-4 py-2.5">Inclusive Wealth Report (2012-2018)</td><td class="px-4 py-2.5">Inclusive wealth: produced + human + natural capital</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">OECD</td><td class="px-4 py-2.5">Better Life Index</td><td class="px-4 py-2.5">11 wellbeing dimensions, interactive comparison</td></tr>
+            <tr><td class="px-4 py-2.5 font-semibold text-text">Herman Daly</td><td class="px-4 py-2.5">"Beyond Growth" (1996)</td><td class="px-4 py-2.5">Ecological economics: GDP ignores environmental degradation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-card border-l-4 border-accent rounded-r-xl p-5 mt-5">
+        <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Honesty note:</strong> the numerical data on wealth composition (percentages) is derived from the World Bank CWON report and presented here in simplified, indicative form. For precise and updated figures, consult the primary sources linked below.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="space-y-2 mt-5 text-sm">
+        <a href="https://www.worldbank.org/en/publication/changing-wealth-of-nations" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
+          <div class="font-semibold">World Bank — The Changing Wealth of Nations 2021</div>
+          <div class="text-text-muted text-xs">Wealth decomposition: produced, human, and natural capital for 146 countries</div>
+        </a>
+        <a href="https://hdr.undp.org/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
+          <div class="font-semibold">UNDP — Human Development Reports</div>
+          <div class="text-text-muted text-xs">HDI: life expectancy, education, income for 193 countries</div>
+        </a>
+        <a href="https://info.worldbank.org/governance/wgi/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
+          <div class="font-semibold">World Bank — Worldwide Governance Indicators</div>
+          <div class="text-text-muted text-xs">6 governance dimensions for 200+ countries since 1996</div>
+        </a>
+        <a href="https://www.oecdbetterlifeindex.org/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
+          <div class="font-semibold">OECD — Better Life Index</div>
+          <div class="text-text-muted text-xs">11 wellbeing dimensions, interactive and customizable</div>
+        </a>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ═══ CTA ═══ -->
     <div class="text-center pt-4">
       <a href={`/${locale}/`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl text-lg transition-colors">
-        {t(locale, 'explain.back_to_rankings')} &rarr;
+        See the rankings &rarr;
       </a>
     </div>
   </div>
