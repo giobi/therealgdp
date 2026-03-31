@@ -1,152 +1,69 @@
 [
-  {
-    "code": "NO", "name_en": "Norway", "name_it": "Norvegia", "region": "europe", "flag": "🇳🇴",
-    "gdp_per_capita_ppp": 82832,
-    "physical": 85, "human": 95, "natural": 88, "institutions": 96, "technology": 82
-  },
-  {
-    "code": "CH", "name_en": "Switzerland", "name_it": "Svizzera", "region": "europe", "flag": "🇨🇭",
-    "gdp_per_capita_ppp": 78111,
-    "physical": 92, "human": 94, "natural": 72, "institutions": 95, "technology": 93
-  },
-  {
-    "code": "DK", "name_en": "Denmark", "name_it": "Danimarca", "region": "europe", "flag": "🇩🇰",
-    "gdp_per_capita_ppp": 67803,
-    "physical": 87, "human": 93, "natural": 70, "institutions": 95, "technology": 85
-  },
-  {
-    "code": "SE", "name_en": "Sweden", "name_it": "Svezia", "region": "europe", "flag": "🇸🇪",
-    "gdp_per_capita_ppp": 60239,
-    "physical": 86, "human": 93, "natural": 78, "institutions": 94, "technology": 88
-  },
-  {
-    "code": "NL", "name_en": "Netherlands", "name_it": "Paesi Bassi", "region": "europe", "flag": "🇳🇱",
-    "gdp_per_capita_ppp": 63766,
-    "physical": 90, "human": 93, "natural": 55, "institutions": 93, "technology": 84
-  },
-  {
-    "code": "FI", "name_en": "Finland", "name_it": "Finlandia", "region": "europe", "flag": "🇫🇮",
-    "gdp_per_capita_ppp": 53654,
-    "physical": 84, "human": 93, "natural": 80, "institutions": 96, "technology": 80
-  },
-  {
-    "code": "DE", "name_en": "Germany", "name_it": "Germania", "region": "europe", "flag": "🇩🇪",
-    "gdp_per_capita_ppp": 58780,
-    "physical": 91, "human": 90, "natural": 52, "institutions": 89, "technology": 90
-  },
-  {
-    "code": "AU", "name_en": "Australia", "name_it": "Australia", "region": "asia", "flag": "🇦🇺",
-    "gdp_per_capita_ppp": 55807,
-    "physical": 82, "human": 91, "natural": 90, "institutions": 91, "technology": 72
-  },
-  {
-    "code": "CA", "name_en": "Canada", "name_it": "Canada", "region": "americas", "flag": "🇨🇦",
-    "gdp_per_capita_ppp": 54966,
-    "physical": 83, "human": 91, "natural": 92, "institutions": 90, "technology": 74
-  },
-  {
-    "code": "NZ", "name_en": "New Zealand", "name_it": "Nuova Zelanda", "region": "asia", "flag": "🇳🇿",
-    "gdp_per_capita_ppp": 44206,
-    "physical": 76, "human": 91, "natural": 88, "institutions": 94, "technology": 65
-  },
-  {
-    "code": "JP", "name_en": "Japan", "name_it": "Giappone", "region": "asia", "flag": "🇯🇵",
-    "gdp_per_capita_ppp": 42940,
-    "physical": 93, "human": 88, "natural": 48, "institutions": 84, "technology": 91
-  },
-  {
-    "code": "KR", "name_en": "South Korea", "name_it": "Corea del Sud", "region": "asia", "flag": "🇰🇷",
-    "gdp_per_capita_ppp": 50030,
-    "physical": 90, "human": 87, "natural": 38, "institutions": 75, "technology": 92
-  },
-  {
-    "code": "SG", "name_en": "Singapore", "name_it": "Singapore", "region": "asia", "flag": "🇸🇬",
-    "gdp_per_capita_ppp": 116486,
-    "physical": 95, "human": 89, "natural": 15, "institutions": 93, "technology": 80
-  },
-  {
-    "code": "US", "name_en": "United States", "name_it": "Stati Uniti", "region": "americas", "flag": "🇺🇸",
-    "gdp_per_capita_ppp": 80035,
-    "physical": 88, "human": 82, "natural": 70, "institutions": 79, "technology": 95
-  },
-  {
-    "code": "GB", "name_en": "United Kingdom", "name_it": "Regno Unito", "region": "europe", "flag": "🇬🇧",
-    "gdp_per_capita_ppp": 49675,
-    "physical": 85, "human": 88, "natural": 52, "institutions": 87, "technology": 82
-  },
-  {
-    "code": "FR", "name_en": "France", "name_it": "Francia", "region": "europe", "flag": "🇫🇷",
-    "gdp_per_capita_ppp": 50729,
-    "physical": 89, "human": 88, "natural": 62, "institutions": 82, "technology": 79
-  },
-  {
-    "code": "IT", "name_en": "Italy", "name_it": "Italia", "region": "europe", "flag": "🇮🇹",
-    "gdp_per_capita_ppp": 45937,
-    "physical": 82, "human": 84, "natural": 65, "institutions": 58, "technology": 62
-  },
-  {
-    "code": "ES", "name_en": "Spain", "name_it": "Spagna", "region": "europe", "flag": "🇪🇸",
-    "gdp_per_capita_ppp": 44328,
-    "physical": 80, "human": 85, "natural": 60, "institutions": 70, "technology": 60
-  },
-  {
-    "code": "PT", "name_en": "Portugal", "name_it": "Portogallo", "region": "europe", "flag": "🇵🇹",
-    "gdp_per_capita_ppp": 38440,
-    "physical": 75, "human": 83, "natural": 58, "institutions": 76, "technology": 55
-  },
-  {
-    "code": "PL", "name_en": "Poland", "name_it": "Polonia", "region": "europe", "flag": "🇵🇱",
-    "gdp_per_capita_ppp": 41685,
-    "physical": 72, "human": 82, "natural": 50, "institutions": 68, "technology": 52
-  },
-  {
-    "code": "CL", "name_en": "Chile", "name_it": "Cile", "region": "americas", "flag": "🇨🇱",
-    "gdp_per_capita_ppp": 28526,
-    "physical": 65, "human": 78, "natural": 72, "institutions": 72, "technology": 38
-  },
-  {
-    "code": "CR", "name_en": "Costa Rica", "name_it": "Costa Rica", "region": "americas", "flag": "🇨🇷",
-    "gdp_per_capita_ppp": 22829,
-    "physical": 55, "human": 76, "natural": 85, "institutions": 68, "technology": 28
-  },
-  {
-    "code": "CN", "name_en": "China", "name_it": "Cina", "region": "asia", "flag": "🇨🇳",
-    "gdp_per_capita_ppp": 21404,
-    "physical": 85, "human": 70, "natural": 38, "institutions": 35, "technology": 72
-  },
-  {
-    "code": "BR", "name_en": "Brazil", "name_it": "Brasile", "region": "americas", "flag": "🇧🇷",
-    "gdp_per_capita_ppp": 17208,
-    "physical": 58, "human": 65, "natural": 88, "institutions": 42, "technology": 38
-  },
-  {
-    "code": "MX", "name_en": "Mexico", "name_it": "Messico", "region": "americas", "flag": "🇲🇽",
-    "gdp_per_capita_ppp": 21440,
-    "physical": 60, "human": 66, "natural": 62, "institutions": 35, "technology": 32
-  },
-  {
-    "code": "IN", "name_en": "India", "name_it": "India", "region": "asia", "flag": "🇮🇳",
-    "gdp_per_capita_ppp": 8379,
-    "physical": 48, "human": 50, "natural": 42, "institutions": 48, "technology": 42
-  },
-  {
-    "code": "SA", "name_en": "Saudi Arabia", "name_it": "Arabia Saudita", "region": "africa", "flag": "🇸🇦",
-    "gdp_per_capita_ppp": 55944,
-    "physical": 78, "human": 65, "natural": 60, "institutions": 42, "technology": 30
-  },
-  {
-    "code": "ZA", "name_en": "South Africa", "name_it": "Sudafrica", "region": "africa", "flag": "🇿🇦",
-    "gdp_per_capita_ppp": 15176,
-    "physical": 52, "human": 52, "natural": 65, "institutions": 55, "technology": 35
-  },
-  {
-    "code": "NG", "name_en": "Nigeria", "name_it": "Nigeria", "region": "africa", "flag": "🇳🇬",
-    "gdp_per_capita_ppp": 5861,
-    "physical": 22, "human": 32, "natural": 55, "institutions": 15, "technology": 12
-  },
-  {
-    "code": "ET", "name_en": "Ethiopia", "name_it": "Etiopia", "region": "africa", "flag": "🇪🇹",
-    "gdp_per_capita_ppp": 2771,
-    "physical": 15, "human": 28, "natural": 42, "institutions": 18, "technology": 8
-  }
+  {"code": "NO", "name_en": "Norway", "name_it": "Norvegia", "region": "europe", "flag": "🇳🇴", "gdp_per_capita_ppp": 82832, "physical": 85, "human": 95, "natural": 88, "institutions": 96, "technology": 82},
+  {"code": "CH", "name_en": "Switzerland", "name_it": "Svizzera", "region": "europe", "flag": "🇨🇭", "gdp_per_capita_ppp": 78111, "physical": 92, "human": 94, "natural": 72, "institutions": 95, "technology": 93},
+  {"code": "DK", "name_en": "Denmark", "name_it": "Danimarca", "region": "europe", "flag": "🇩🇰", "gdp_per_capita_ppp": 67803, "physical": 87, "human": 93, "natural": 70, "institutions": 95, "technology": 85},
+  {"code": "SE", "name_en": "Sweden", "name_it": "Svezia", "region": "europe", "flag": "🇸🇪", "gdp_per_capita_ppp": 60239, "physical": 86, "human": 93, "natural": 78, "institutions": 94, "technology": 88},
+  {"code": "NL", "name_en": "Netherlands", "name_it": "Paesi Bassi", "region": "europe", "flag": "🇳🇱", "gdp_per_capita_ppp": 63766, "physical": 90, "human": 93, "natural": 55, "institutions": 93, "technology": 84},
+  {"code": "FI", "name_en": "Finland", "name_it": "Finlandia", "region": "europe", "flag": "🇫🇮", "gdp_per_capita_ppp": 53654, "physical": 84, "human": 93, "natural": 80, "institutions": 96, "technology": 80},
+  {"code": "DE", "name_en": "Germany", "name_it": "Germania", "region": "europe", "flag": "🇩🇪", "gdp_per_capita_ppp": 58780, "physical": 91, "human": 90, "natural": 52, "institutions": 89, "technology": 90},
+  {"code": "AU", "name_en": "Australia", "name_it": "Australia", "region": "asia", "flag": "🇦🇺", "gdp_per_capita_ppp": 55807, "physical": 82, "human": 91, "natural": 90, "institutions": 91, "technology": 72},
+  {"code": "CA", "name_en": "Canada", "name_it": "Canada", "region": "americas", "flag": "🇨🇦", "gdp_per_capita_ppp": 54966, "physical": 83, "human": 91, "natural": 92, "institutions": 90, "technology": 74},
+  {"code": "NZ", "name_en": "New Zealand", "name_it": "Nuova Zelanda", "region": "asia", "flag": "🇳🇿", "gdp_per_capita_ppp": 44206, "physical": 76, "human": 91, "natural": 88, "institutions": 94, "technology": 65},
+  {"code": "JP", "name_en": "Japan", "name_it": "Giappone", "region": "asia", "flag": "🇯🇵", "gdp_per_capita_ppp": 42940, "physical": 93, "human": 88, "natural": 48, "institutions": 84, "technology": 91},
+  {"code": "KR", "name_en": "South Korea", "name_it": "Corea del Sud", "region": "asia", "flag": "🇰🇷", "gdp_per_capita_ppp": 50030, "physical": 90, "human": 87, "natural": 38, "institutions": 75, "technology": 92},
+  {"code": "SG", "name_en": "Singapore", "name_it": "Singapore", "region": "asia", "flag": "🇸🇬", "gdp_per_capita_ppp": 116486, "physical": 95, "human": 89, "natural": 15, "institutions": 93, "technology": 80},
+  {"code": "US", "name_en": "United States", "name_it": "Stati Uniti", "region": "americas", "flag": "🇺🇸", "gdp_per_capita_ppp": 80035, "physical": 88, "human": 82, "natural": 70, "institutions": 79, "technology": 95},
+  {"code": "GB", "name_en": "United Kingdom", "name_it": "Regno Unito", "region": "europe", "flag": "🇬🇧", "gdp_per_capita_ppp": 49675, "physical": 85, "human": 88, "natural": 52, "institutions": 87, "technology": 82},
+  {"code": "FR", "name_en": "France", "name_it": "Francia", "region": "europe", "flag": "🇫🇷", "gdp_per_capita_ppp": 50729, "physical": 89, "human": 88, "natural": 62, "institutions": 82, "technology": 79},
+  {"code": "IE", "name_en": "Ireland", "name_it": "Irlanda", "region": "europe", "flag": "🇮🇪", "gdp_per_capita_ppp": 106845, "physical": 78, "human": 91, "natural": 60, "institutions": 88, "technology": 75},
+  {"code": "AT", "name_en": "Austria", "name_it": "Austria", "region": "europe", "flag": "🇦🇹", "gdp_per_capita_ppp": 59143, "physical": 88, "human": 90, "natural": 68, "institutions": 90, "technology": 78},
+  {"code": "BE", "name_en": "Belgium", "name_it": "Belgio", "region": "europe", "flag": "🇧🇪", "gdp_per_capita_ppp": 56956, "physical": 87, "human": 89, "natural": 42, "institutions": 84, "technology": 78},
+  {"code": "IS", "name_en": "Iceland", "name_it": "Islanda", "region": "europe", "flag": "🇮🇸", "gdp_per_capita_ppp": 58193, "physical": 78, "human": 94, "natural": 85, "institutions": 95, "technology": 68},
+  {"code": "LU", "name_en": "Luxembourg", "name_it": "Lussemburgo", "region": "europe", "flag": "🇱🇺", "gdp_per_capita_ppp": 126598, "physical": 90, "human": 88, "natural": 35, "institutions": 94, "technology": 72},
+  {"code": "IT", "name_en": "Italy", "name_it": "Italia", "region": "europe", "flag": "🇮🇹", "gdp_per_capita_ppp": 45937, "physical": 82, "human": 84, "natural": 65, "institutions": 58, "technology": 62},
+  {"code": "ES", "name_en": "Spain", "name_it": "Spagna", "region": "europe", "flag": "🇪🇸", "gdp_per_capita_ppp": 44328, "physical": 80, "human": 85, "natural": 60, "institutions": 70, "technology": 60},
+  {"code": "PT", "name_en": "Portugal", "name_it": "Portogallo", "region": "europe", "flag": "🇵🇹", "gdp_per_capita_ppp": 38440, "physical": 75, "human": 83, "natural": 58, "institutions": 76, "technology": 55},
+  {"code": "CZ", "name_en": "Czech Republic", "name_it": "Rep. Ceca", "region": "europe", "flag": "🇨🇿", "gdp_per_capita_ppp": 45025, "physical": 78, "human": 85, "natural": 45, "institutions": 72, "technology": 58},
+  {"code": "EE", "name_en": "Estonia", "name_it": "Estonia", "region": "europe", "flag": "🇪🇪", "gdp_per_capita_ppp": 42052, "physical": 72, "human": 87, "natural": 55, "institutions": 82, "technology": 62},
+  {"code": "SI", "name_en": "Slovenia", "name_it": "Slovenia", "region": "europe", "flag": "🇸🇮", "gdp_per_capita_ppp": 43230, "physical": 75, "human": 87, "natural": 62, "institutions": 76, "technology": 55},
+  {"code": "PL", "name_en": "Poland", "name_it": "Polonia", "region": "europe", "flag": "🇵🇱", "gdp_per_capita_ppp": 41685, "physical": 72, "human": 82, "natural": 50, "institutions": 68, "technology": 52},
+  {"code": "GR", "name_en": "Greece", "name_it": "Grecia", "region": "europe", "flag": "🇬🇷", "gdp_per_capita_ppp": 33393, "physical": 72, "human": 82, "natural": 55, "institutions": 58, "technology": 42},
+  {"code": "HU", "name_en": "Hungary", "name_it": "Ungheria", "region": "europe", "flag": "🇭🇺", "gdp_per_capita_ppp": 38308, "physical": 70, "human": 80, "natural": 45, "institutions": 60, "technology": 48},
+  {"code": "HR", "name_en": "Croatia", "name_it": "Croazia", "region": "europe", "flag": "🇭🇷", "gdp_per_capita_ppp": 33806, "physical": 68, "human": 80, "natural": 58, "institutions": 60, "technology": 38},
+  {"code": "RO", "name_en": "Romania", "name_it": "Romania", "region": "europe", "flag": "🇷🇴", "gdp_per_capita_ppp": 35432, "physical": 62, "human": 75, "natural": 52, "institutions": 52, "technology": 35},
+  {"code": "BG", "name_en": "Bulgaria", "name_it": "Bulgaria", "region": "europe", "flag": "🇧🇬", "gdp_per_capita_ppp": 29761, "physical": 58, "human": 74, "natural": 50, "institutions": 48, "technology": 32},
+  {"code": "RS", "name_en": "Serbia", "name_it": "Serbia", "region": "europe", "flag": "🇷🇸", "gdp_per_capita_ppp": 21508, "physical": 55, "human": 72, "natural": 48, "institutions": 42, "technology": 30},
+  {"code": "UA", "name_en": "Ukraine", "name_it": "Ucraina", "region": "europe", "flag": "🇺🇦", "gdp_per_capita_ppp": 13680, "physical": 45, "human": 75, "natural": 52, "institutions": 32, "technology": 38},
+  {"code": "RU", "name_en": "Russia", "name_it": "Russia", "region": "europe", "flag": "🇷🇺", "gdp_per_capita_ppp": 29181, "physical": 65, "human": 72, "natural": 72, "institutions": 22, "technology": 48},
+  {"code": "TR", "name_en": "Turkey", "name_it": "Turchia", "region": "europe", "flag": "🇹🇷", "gdp_per_capita_ppp": 35048, "physical": 70, "human": 68, "natural": 48, "institutions": 38, "technology": 42},
+  {"code": "IL", "name_en": "Israel", "name_it": "Israele", "region": "asia", "flag": "🇮🇱", "gdp_per_capita_ppp": 44966, "physical": 82, "human": 86, "natural": 28, "institutions": 72, "technology": 90},
+  {"code": "AE", "name_en": "UAE", "name_it": "Emirati Arabi", "region": "africa", "flag": "🇦🇪", "gdp_per_capita_ppp": 74738, "physical": 90, "human": 75, "natural": 42, "institutions": 72, "technology": 52},
+  {"code": "QA", "name_en": "Qatar", "name_it": "Qatar", "region": "africa", "flag": "🇶🇦", "gdp_per_capita_ppp": 100037, "physical": 88, "human": 72, "natural": 48, "institutions": 68, "technology": 38},
+  {"code": "SA", "name_en": "Saudi Arabia", "name_it": "Arabia Saudita", "region": "africa", "flag": "🇸🇦", "gdp_per_capita_ppp": 55944, "physical": 78, "human": 65, "natural": 60, "institutions": 42, "technology": 30},
+  {"code": "TW", "name_en": "Taiwan", "name_it": "Taiwan", "region": "asia", "flag": "🇹🇼", "gdp_per_capita_ppp": 62078, "physical": 88, "human": 88, "natural": 35, "institutions": 78, "technology": 92},
+  {"code": "MY", "name_en": "Malaysia", "name_it": "Malesia", "region": "asia", "flag": "🇲🇾", "gdp_per_capita_ppp": 31580, "physical": 72, "human": 72, "natural": 68, "institutions": 62, "technology": 42},
+  {"code": "TH", "name_en": "Thailand", "name_it": "Thailandia", "region": "asia", "flag": "🇹🇭", "gdp_per_capita_ppp": 19157, "physical": 65, "human": 65, "natural": 55, "institutions": 45, "technology": 32},
+  {"code": "VN", "name_en": "Vietnam", "name_it": "Vietnam", "region": "asia", "flag": "🇻🇳", "gdp_per_capita_ppp": 12415, "physical": 55, "human": 62, "natural": 48, "institutions": 38, "technology": 28},
+  {"code": "ID", "name_en": "Indonesia", "name_it": "Indonesia", "region": "asia", "flag": "🇮🇩", "gdp_per_capita_ppp": 14535, "physical": 52, "human": 58, "natural": 62, "institutions": 45, "technology": 22},
+  {"code": "PH", "name_en": "Philippines", "name_it": "Filippine", "region": "asia", "flag": "🇵🇭", "gdp_per_capita_ppp": 10135, "physical": 42, "human": 58, "natural": 52, "institutions": 40, "technology": 18},
+  {"code": "BD", "name_en": "Bangladesh", "name_it": "Bangladesh", "region": "asia", "flag": "🇧🇩", "gdp_per_capita_ppp": 7067, "physical": 35, "human": 45, "natural": 38, "institutions": 28, "technology": 12},
+  {"code": "PK", "name_en": "Pakistan", "name_it": "Pakistan", "region": "asia", "flag": "🇵🇰", "gdp_per_capita_ppp": 6470, "physical": 35, "human": 38, "natural": 35, "institutions": 25, "technology": 15},
+  {"code": "CL", "name_en": "Chile", "name_it": "Cile", "region": "americas", "flag": "🇨🇱", "gdp_per_capita_ppp": 28526, "physical": 65, "human": 78, "natural": 72, "institutions": 72, "technology": 38},
+  {"code": "UY", "name_en": "Uruguay", "name_it": "Uruguay", "region": "americas", "flag": "🇺🇾", "gdp_per_capita_ppp": 23571, "physical": 58, "human": 76, "natural": 70, "institutions": 75, "technology": 28},
+  {"code": "CR", "name_en": "Costa Rica", "name_it": "Costa Rica", "region": "americas", "flag": "🇨🇷", "gdp_per_capita_ppp": 22829, "physical": 55, "human": 76, "natural": 85, "institutions": 68, "technology": 28},
+  {"code": "AR", "name_en": "Argentina", "name_it": "Argentina", "region": "americas", "flag": "🇦🇷", "gdp_per_capita_ppp": 24930, "physical": 58, "human": 78, "natural": 72, "institutions": 38, "technology": 38},
+  {"code": "CO", "name_en": "Colombia", "name_it": "Colombia", "region": "americas", "flag": "🇨🇴", "gdp_per_capita_ppp": 17323, "physical": 50, "human": 65, "natural": 75, "institutions": 40, "technology": 25},
+  {"code": "PE", "name_en": "Peru", "name_it": "Perù", "region": "americas", "flag": "🇵🇪", "gdp_per_capita_ppp": 14771, "physical": 48, "human": 62, "natural": 72, "institutions": 35, "technology": 18},
+  {"code": "CN", "name_en": "China", "name_it": "Cina", "region": "asia", "flag": "🇨🇳", "gdp_per_capita_ppp": 21404, "physical": 85, "human": 70, "natural": 38, "institutions": 35, "technology": 72},
+  {"code": "BR", "name_en": "Brazil", "name_it": "Brasile", "region": "americas", "flag": "🇧🇷", "gdp_per_capita_ppp": 17208, "physical": 58, "human": 65, "natural": 88, "institutions": 42, "technology": 38},
+  {"code": "MX", "name_en": "Mexico", "name_it": "Messico", "region": "americas", "flag": "🇲🇽", "gdp_per_capita_ppp": 21440, "physical": 60, "human": 66, "natural": 62, "institutions": 35, "technology": 32},
+  {"code": "IN", "name_en": "India", "name_it": "India", "region": "asia", "flag": "🇮🇳", "gdp_per_capita_ppp": 8379, "physical": 48, "human": 50, "natural": 42, "institutions": 48, "technology": 42},
+  {"code": "EG", "name_en": "Egypt", "name_it": "Egitto", "region": "africa", "flag": "🇪🇬", "gdp_per_capita_ppp": 14927, "physical": 50, "human": 52, "natural": 32, "institutions": 28, "technology": 22},
+  {"code": "MA", "name_en": "Morocco", "name_it": "Marocco", "region": "africa", "flag": "🇲🇦", "gdp_per_capita_ppp": 9339, "physical": 52, "human": 52, "natural": 38, "institutions": 42, "technology": 18},
+  {"code": "KE", "name_en": "Kenya", "name_it": "Kenya", "region": "africa", "flag": "🇰🇪", "gdp_per_capita_ppp": 5766, "physical": 30, "human": 42, "natural": 52, "institutions": 35, "technology": 15},
+  {"code": "GH", "name_en": "Ghana", "name_it": "Ghana", "region": "africa", "flag": "🇬🇭", "gdp_per_capita_ppp": 6348, "physical": 32, "human": 48, "natural": 50, "institutions": 52, "technology": 12},
+  {"code": "TZ", "name_en": "Tanzania", "name_it": "Tanzania", "region": "africa", "flag": "🇹🇿", "gdp_per_capita_ppp": 3349, "physical": 22, "human": 38, "natural": 58, "institutions": 38, "technology": 8},
+  {"code": "ZA", "name_en": "South Africa", "name_it": "Sudafrica", "region": "africa", "flag": "🇿🇦", "gdp_per_capita_ppp": 15176, "physical": 52, "human": 52, "natural": 65, "institutions": 55, "technology": 35},
+  {"code": "NG", "name_en": "Nigeria", "name_it": "Nigeria", "region": "africa", "flag": "🇳🇬", "gdp_per_capita_ppp": 5861, "physical": 22, "human": 32, "natural": 55, "institutions": 15, "technology": 12},
+  {"code": "ET", "name_en": "Ethiopia", "name_it": "Etiopia", "region": "africa", "flag": "🇪🇹", "gdp_per_capita_ppp": 2771, "physical": 15, "human": 28, "natural": 42, "institutions": 18, "technology": 8}
 ]
