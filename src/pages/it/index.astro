@@ -255,7 +255,6 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
       };
 
       let current = 0;
-      let timer;
 
       function show(idx) {
         explainSlides.forEach((s, i) => s.classList.toggle('hidden', i !== idx));
@@ -277,15 +276,10 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
         current = idx;
       }
 
-      function next() { show((current + 1) % explainSlides.length); }
-      timer = setInterval(next, 5000);
-
       function handleDotClick(e) {
         const btn = e.target.closest('button');
         if (!btn || !btn.dataset.idx) return;
-        clearInterval(timer);
         show(parseInt(btn.dataset.idx));
-        timer = setInterval(next, 5000);
       }
 
       document.getElementById('dim-explain-dots')?.addEventListener('click', handleDotClick);
