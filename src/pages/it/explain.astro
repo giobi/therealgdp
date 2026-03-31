@@ -5,160 +5,154 @@ import { t } from '@/i18n';
 const locale = 'it';
 ---
 
-<Base title="What is the Real GDP?" locale={locale}>
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+<Base title="Cos'è il Real GDP?" locale={locale}>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
 
     <!-- Header -->
-    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">No economics degree required</p>
-    <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-3">What is the Real GDP?</h1>
-    <p class="text-text-secondary text-lg mb-4">A long, honest explanation of why GDP is broken and what we should measure instead.</p>
+    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">Nessuna laurea in economia richiesta</p>
+    <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-3">Cos'è il Real GDP?</h1>
+    <p class="text-text-secondary text-lg mb-4">Una spiegazione lunga e onesta di perché il PIL è rotto e cosa dovremmo misurare al suo posto.</p>
 
     <!-- TOC -->
     <nav class="bg-surface border border-border rounded-xl p-5 mb-12 text-sm">
       <ol class="space-y-1.5 text-text-secondary list-decimal list-inside">
-        <li><a href="#island" class="hover:text-accent-light transition-colors">The island: a thought experiment</a></li>
-        <li><a href="#gdp-problem" class="hover:text-accent-light transition-colors">Why GDP is a terrible proxy</a></li>
-        <li><a href="#dimensions" class="hover:text-accent-light transition-colors">The 5 dimensions of real wealth</a></li>
-        <li><a href="#numbers" class="hover:text-accent-light transition-colors">The numbers: global wealth composition</a></li>
-        <li><a href="#how" class="hover:text-accent-light transition-colors">How we actually measure them</a></li>
-        <li><a href="#alternatives" class="hover:text-accent-light transition-colors">Who else has tried</a></li>
-        <li><a href="#paradoxes" class="hover:text-accent-light transition-colors">When GDP lies: real-world paradoxes</a></li>
-        <li><a href="#sources" class="hover:text-accent-light transition-colors">Academic sources</a></li>
+        <li><a href="#isola" class="hover:text-accent-light transition-colors">L'isola: un esperimento mentale</a></li>
+        <li><a href="#pil-problema" class="hover:text-accent-light transition-colors">Perché il PIL è un proxy di merda</a></li>
+        <li><a href="#dimensioni" class="hover:text-accent-light transition-colors">Le 5 dimensioni della ricchezza reale</a></li>
+        <li><a href="#numeri" class="hover:text-accent-light transition-colors">I numeri: composizione della ricchezza globale</a></li>
+        <li><a href="#come" class="hover:text-accent-light transition-colors">Come si misurano concretamente</a></li>
+        <li><a href="#alternative" class="hover:text-accent-light transition-colors">Chi ci ha provato</a></li>
+        <li><a href="#paradossi" class="hover:text-accent-light transition-colors">Quando il PIL mente: paradossi reali</a></li>
+        <li><a href="#fonti" class="hover:text-accent-light transition-colors">Fonti accademiche</a></li>
       </ol>
     </nav>
 
-    <!-- ═══ 1. THE ISLAND ═══ -->
-    <section class="mb-14" id="island">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Starting point</p>
-      <h2 class="text-2xl font-bold mb-4">The island: a thought experiment</h2>
+    <!-- ═══ 1. L'ISOLA ═══ -->
+    <section class="mb-14" id="isola">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Punto di partenza</p>
+      <h2 class="text-2xl font-bold mb-4">L'isola: un esperimento mentale</h2>
 
       <div class="bg-card border border-border rounded-xl p-6 mb-5 text-text-secondary leading-relaxed">
-        <p class="mb-3">We're on an island. I grow apples, you grow pears. Instead of bartering directly, we invent a <strong class="text-text">third thing: money</strong>. Apples cost X, pears cost Y.</p>
-        <p class="mb-3">Fewer apples means higher prices. If pears are better and cover what apples do, apples die out.</p>
-        <p>But how do you measure the island's wealth? <strong class="text-text">Not by the money in circulation</strong> — that's an arbitrary number meant to represent real resources.</p>
+        <p class="mb-3">Siamo su un'isola. Io produco mele, tu pere. Invece di scambiarle direttamente facciamo riferimento a un <strong class="text-text">valore terzo: il denaro</strong>. Le mele valgono tot, le pere valgono tot.</p>
+        <p class="mb-3">Meno mele ci sono, più salgono di prezzo. Se la pera è un prodotto più figo e copre anche gli utilizzi della mela, la mela muore.</p>
+        <p>Ma come si misura la ricchezza dell'isola? <strong class="text-text">Non dai soldi in circolazione</strong> — quelli sono un numero arbitrario che dovrebbe simboleggiare le risorse reali.</p>
       </div>
 
       <div class="text-text-secondary leading-relaxed space-y-4">
-        <p>This thought experiment leads straight to a fundamental distinction in economics: the difference between <strong class="text-text">flow</strong> and <strong class="text-text">stock</strong>.</p>
-        <p>Money measures the flow — how much circulates. But the island's real wealth is the <strong class="text-text">stock</strong>: the cultivated land, the fishing boats, the inhabitants' skills, the rules they've agreed to live by, the farming techniques they've invented.</p>
-        <p>If you print twice as much money on the island, you don't get one more apple.</p>
+        <p>Questo ragionamento porta dritto a una distinzione fondamentale in economia: la differenza tra <strong class="text-text">flusso</strong> e <strong class="text-text">stock</strong>.</p>
+        <p>Il denaro misura il flusso — quanto circola. Ma la ricchezza vera dell'isola è lo <strong class="text-text">stock</strong>: i terreni coltivati, le barche per pescare, le competenze degli abitanti, le regole che si sono dati per convivere, le tecniche di coltivazione che hanno inventato.</p>
+        <p>Se stampi il doppio dei soldi sull'isola, non hai una mela in più.</p>
       </div>
     </section>
 
-    <!-- ═══ 2. GDP PROBLEM ═══ -->
-    <section class="mb-14" id="gdp-problem">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The problem</p>
-      <h2 class="text-2xl font-bold mb-4">Why GDP is a terrible proxy</h2>
+    <!-- ═══ 2. PIL PROBLEMA ═══ -->
+    <section class="mb-14" id="pil-problema">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Il problema</p>
+      <h2 class="text-2xl font-bold mb-4">Perché il PIL è un proxy di merda</h2>
 
-      <p class="text-text-secondary leading-relaxed mb-5"><strong class="text-text">GDP (Gross Domestic Product)</strong> measures the total value of goods and services produced in a country in a year. It's a measure of <strong class="text-text">activity</strong>, not <strong class="text-text">health</strong>.</p>
+      <p class="text-text-secondary leading-relaxed mb-5">Il <strong class="text-text">PIL (Prodotto Interno Lordo)</strong> misura il valore totale dei beni e servizi prodotti in un paese in un anno. È una misura di <strong class="text-text">attività</strong>, non di <strong class="text-text">salute</strong>.</p>
 
-      <!-- Stat grid -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden mb-5">
         <div class="bg-surface p-4 text-center">
           <div class="text-2xl font-black text-accent-light">1934</div>
-          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Invented</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Anno invenzione</div>
         </div>
         <div class="bg-surface p-4 text-center">
           <div class="text-2xl font-black text-accent-light">Kuznets</div>
-          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Inventor</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Inventore</div>
         </div>
         <div class="bg-surface p-4 text-center">
-          <div class="text-2xl font-black text-accent-light">1 year</div>
-          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Time horizon</div>
+          <div class="text-2xl font-black text-accent-light">1 anno</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Orizzonte</div>
         </div>
         <div class="bg-surface p-4 text-center">
-          <div class="text-2xl font-black text-accent-light">Flow</div>
-          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Type</div>
+          <div class="text-2xl font-black text-accent-light">Flusso</div>
+          <div class="text-[10px] font-semibold text-text-muted uppercase tracking-wider">Tipo misura</div>
         </div>
       </div>
 
-      <!-- Kuznets quote -->
       <div class="bg-card border-l-4 border-amber rounded-r-xl p-5 mb-6">
-        <p class="text-text italic leading-relaxed">"The welfare of a nation can scarcely be inferred from a measurement of national income." — <strong class="text-amber">Simon Kuznets, 1934</strong>, the inventor of GDP himself, in the report to the US Congress where he proposed it.</p>
+        <p class="text-text italic leading-relaxed">"Il benessere di una nazione non può essere dedotto da una misura del reddito nazionale." — <strong class="text-amber">Simon Kuznets, 1934</strong>, l'inventore stesso del PIL, nel report al Congresso USA in cui lo propose.</p>
       </div>
 
       <div class="text-text-secondary leading-relaxed space-y-4">
-        <p>GDP <strong class="text-text">counts</strong> things that aren't wellbeing:</p>
+        <p>Il PIL <strong class="text-text">conta</strong> cose che non sono benessere:</p>
         <ul class="list-disc list-inside space-y-1.5 ml-2">
-          <li><strong class="text-text">A car accident</strong> increases GDP: ambulance, hospital, car repair, lawyers</li>
-          <li><strong class="text-text">Pollution</strong> increases GDP: the factory produces (GDP +), then you need doctors and cleanup (GDP ++)</li>
-          <li><strong class="text-text">A hurricane</strong> increases GDP: reconstruction is economic activity</li>
+          <li><strong class="text-text">Un incidente stradale</strong> fa salire il PIL: ambulanza, ospedale, riparazione auto, avvocati</li>
+          <li><strong class="text-text">L'inquinamento</strong> fa salire il PIL: la fabbrica produce (PIL +), poi servono medici e bonifica (PIL ++)</li>
+          <li><strong class="text-text">Un uragano</strong> fa salire il PIL: la ricostruzione è attività economica</li>
         </ul>
-        <p>GDP <strong class="text-text">doesn't count</strong> things that are wellbeing:</p>
+        <p>Il PIL <strong class="text-text">non conta</strong> cose che sono benessere:</p>
         <ul class="list-disc list-inside space-y-1.5 ml-2">
-          <li>Domestic and care work (parents, volunteers)</li>
-          <li>The natural environment (forests, clean air, biodiversity)</li>
-          <li>Free time and quality of life</li>
-          <li>Distribution: a sky-high GDP concentrated in 10 people doesn't make a country rich</li>
+          <li>Il lavoro domestico e di cura (genitori, volontari)</li>
+          <li>L'ambiente naturale (foreste, aria pulita, biodiversità)</li>
+          <li>Il tempo libero e la qualità della vita</li>
+          <li>La distribuzione: un PIL altissimo concentrato in 10 persone non rende ricco un paese</li>
         </ul>
 
         <div class="bg-surface border border-border rounded-xl p-5 text-sm">
-          <p class="text-text font-semibold mb-1">The pharmacy analogy</p>
-          <p>GDP is like measuring your health by how much you spend at the pharmacy. Spending more doesn't mean you're healthier — it might mean the opposite. Real health is your muscle mass, cardiovascular fitness, mental wellbeing, nutrition. That's what we need to measure for countries too.</p>
+          <p class="text-text font-semibold mb-1">L'analogia della farmacia</p>
+          <p>Il PIL è come misurare la tua salute guardando quanto spendi in farmacia. Spendere di più non vuol dire stare meglio — potrebbe voler dire il contrario. La vera salute sono i tuoi muscoli, il cuore, il benessere mentale, l'alimentazione. È questo che dobbiamo misurare anche per i paesi.</p>
         </div>
       </div>
     </section>
 
-    <!-- ═══ 3. THE 5 DIMENSIONS ═══ -->
-    <section class="mb-14" id="dimensions">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The framework</p>
-      <h2 class="text-2xl font-bold mb-4">The 5 dimensions of real wealth</h2>
+    <!-- ═══ 3. LE 5 DIMENSIONI ═══ -->
+    <section class="mb-14" id="dimensioni">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Il framework</p>
+      <h2 class="text-2xl font-bold mb-4">Le 5 dimensioni della ricchezza reale</h2>
 
       <div class="text-text-secondary leading-relaxed space-y-4 mb-6">
-        <p>There's no single official definition of "a country's wealth". But the economic literature converges on <strong class="text-text">five categories of capital</strong> that, together, give a much more honest picture than GDP.</p>
-        <p>These aren't concepts invented by a chatbot: each dimension has decades of academic research and at least one Nobel Prize in Economics behind it.</p>
+        <p>Non esiste una definizione ufficiale unica di "ricchezza di un paese". Ma la letteratura economica converge su <strong class="text-text">cinque categorie di capitale</strong> che, insieme, danno un quadro molto più onesto del PIL.</p>
+        <p>Questi non sono concetti inventati da un chatbot: ogni dimensione ha dietro decenni di ricerca accademica e almeno un Nobel per l'economia.</p>
       </div>
 
       <div class="space-y-4">
-        <!-- Physical -->
         <div class="bg-surface border border-border rounded-xl p-5">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-blue/15 flex items-center justify-center shrink-0"><Icon name="physical" size={22} class="text-blue" /></div>
-            <h3 class="font-bold text-blue">1. Physical Capital (Produced)</h3>
+            <h3 class="font-bold text-blue">1. Capitale Fisico (Prodotto)</h3>
           </div>
-          <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastructure, machinery, buildings, roads, electrical and telecommunications networks, ports, airports. Everything humans have <strong class="text-text">built</strong> that enables the production of other things.</p>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Infrastrutture, macchinari, edifici, strade, reti elettriche e di telecomunicazione, porti, aeroporti. Tutto ciò che gli esseri umani hanno <strong class="text-text">costruito</strong> e che serve a produrre altre cose.</p>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Adam Smith, 1776</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Measurable: national inventories</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~27% of global wealth</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Misurabile: inventari nazionali</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~27% della ricchezza globale</span>
           </div>
         </div>
 
-        <!-- Human -->
         <div class="bg-surface border border-border rounded-xl p-5">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-green/15 flex items-center justify-center shrink-0"><Icon name="human" size={22} class="text-green" /></div>
-            <h3 class="font-bold text-green">2. Human Capital</h3>
+            <h3 class="font-bold text-green">2. Capitale Umano</h3>
           </div>
-          <p class="text-text-secondary text-sm leading-relaxed mb-3">Education, skills, health, work experience of the population. The productive capacity of <strong class="text-text">people</strong>. It's the single largest component of wealth in advanced economies.</p>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Istruzione, competenze, salute, esperienza lavorativa della popolazione. La capacità produttiva delle <strong class="text-text">persone</strong>. È la componente più grande della ricchezza nei paesi avanzati.</p>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Gary Becker</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1992</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~64% of global wealth</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~64% della ricchezza globale</span>
           </div>
         </div>
 
-        <!-- Natural -->
         <div class="bg-surface border border-border rounded-xl p-5">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-amber/15 flex items-center justify-center shrink-0"><Icon name="natural" size={22} class="text-amber" /></div>
-            <h3 class="font-bold text-amber">3. Natural Capital</h3>
+            <h3 class="font-bold text-amber">3. Capitale Naturale</h3>
           </div>
-          <p class="text-text-secondary text-sm leading-relaxed mb-3">Natural resources: farmland, forests, mineral reserves, water, biodiversity, ecosystem services (pollination, air and water purification). Includes both <strong class="text-text">renewable and non-renewable</strong> resources.</p>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Risorse naturali: terra coltivabile, foreste, riserve minerarie, acqua, biodiversità, servizi ecosistemici (impollinazione, purificazione aria/acqua). Include le risorse <strong class="text-text">rinnovabili e non</strong>.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Herman Daly, ecological economics</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~9% of global wealth</span>
-            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Critical in low-income countries</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Herman Daly, economia ecologica</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">~9% della ricchezza globale</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Critico nei paesi a basso reddito</span>
           </div>
         </div>
 
-        <!-- Institutions -->
         <div class="bg-surface border border-border rounded-xl p-5">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0"><Icon name="institutions" size={22} class="text-accent-light" /></div>
-            <h3 class="font-bold text-accent-light">4. Institutional Capital</h3>
+            <h3 class="font-bold text-accent-light">4. Capitale Istituzionale</h3>
           </div>
-          <p class="text-text-secondary text-sm leading-relaxed mb-3">Rule of law, judicial system, property protection, bureaucratic efficiency, corruption levels, social trust, political stability. The <strong class="text-text">rules of the game</strong> and how well they're enforced.</p>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Stato di diritto, sistema giudiziario, tutela della proprietà, efficienza della burocrazia, livello di corruzione, fiducia sociale, stabilità politica. Le <strong class="text-text">regole del gioco</strong> e quanto vengono rispettate.</p>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Douglass North</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1993</span>
@@ -167,13 +161,12 @@ const locale = 'it';
           </div>
         </div>
 
-        <!-- Technology -->
         <div class="bg-surface border border-border rounded-xl p-5">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-red/15 flex items-center justify-center shrink-0"><Icon name="technology" size={22} class="text-red" /></div>
-            <h3 class="font-bold text-red">5. Technology & Know-how</h3>
+            <h3 class="font-bold text-red">5. Tecnologia e Know-how</h3>
           </div>
-          <p class="text-text-secondary text-sm leading-relaxed mb-3">Innovation, patents, production processes, scientific research. The "Solow residual": the part of economic growth that <strong class="text-text">can't be explained</strong> by more labour or more physical capital. It's the multiplier of everything else.</p>
+          <p class="text-text-secondary text-sm leading-relaxed mb-3">Innovazione, brevetti, processi produttivi, ricerca scientifica. Il "residuo di Solow": la parte della crescita economica che <strong class="text-text">non si spiega</strong> con più lavoro o più capitale fisico. È il moltiplicatore di tutto il resto.</p>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Robert Solow</span>
             <span class="text-xs px-2 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">Nobel 1987</span>
@@ -184,220 +177,218 @@ const locale = 'it';
       </div>
     </section>
 
-    <!-- ═══ 4. NUMBERS ═══ -->
-    <section class="mb-14" id="numbers">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">The data</p>
-      <h2 class="text-2xl font-bold mb-4">Global wealth composition</h2>
+    <!-- ═══ 4. NUMERI ═══ -->
+    <section class="mb-14" id="numeri">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">I dati</p>
+      <h2 class="text-2xl font-bold mb-4">Composizione della ricchezza globale</h2>
 
       <div class="text-text-secondary leading-relaxed space-y-4 mb-6">
-        <p>The <strong class="text-text">World Bank</strong> publishes <em>The Changing Wealth of Nations</em> (editions 2006, 2011, 2018, 2021) — the most ambitious attempt to measure total wealth by decomposing it into capitals. It covers 146 countries.</p>
-        <p>The most surprising finding: <strong class="text-text">human capital is the dominant component</strong>. Not factories, not oil — people.</p>
+        <p>La <strong class="text-text">Banca Mondiale</strong> pubblica il report <em>The Changing Wealth of Nations</em> (edizioni 2006, 2011, 2018, 2021) — il tentativo più ambizioso di misurare la ricchezza totale decomponendola in capitali. Copre 146 paesi.</p>
+        <p>Il dato più sorprendente: <strong class="text-text">il capitale umano è la componente dominante</strong>. Non le fabbriche, non il petrolio — le persone.</p>
       </div>
 
-      <!-- Visual wealth bars -->
       <div class="space-y-4 mb-6">
         <div class="bg-surface border border-border rounded-xl p-5">
-          <p class="text-sm font-bold mb-3">High-income countries (OECD)</p>
+          <p class="text-sm font-bold mb-3">Paesi ad alto reddito (OCSE)</p>
           <div class="h-6 rounded-full overflow-hidden flex">
-            <div class="bg-blue h-full" style="width: 27%" title="Physical 27%"></div>
-            <div class="bg-green h-full" style="width: 64%" title="Human 64%"></div>
-            <div class="bg-amber h-full" style="width: 3%" title="Natural 3%"></div>
-            <div class="bg-accent-light h-full" style="width: 4%" title="Institutions (included in others)"></div>
-            <div class="bg-red h-full" style="width: 2%" title="Technology (included in others)"></div>
+            <div class="bg-blue h-full" style="width: 27%" title="Fisico 27%"></div>
+            <div class="bg-green h-full" style="width: 64%" title="Umano 64%"></div>
+            <div class="bg-amber h-full" style="width: 3%" title="Naturale 3%"></div>
+            <div class="bg-accent-light h-full" style="width: 4%" title="Istituzioni"></div>
+            <div class="bg-red h-full" style="width: 2%" title="Tecnologia"></div>
           </div>
           <div class="flex flex-wrap gap-3 mt-2 text-xs text-text-muted">
-            <span><span class="text-blue">■</span> Physical 27%</span>
-            <span><span class="text-green">■</span> Human 64%</span>
-            <span><span class="text-amber">■</span> Natural 3%</span>
-            <span><span class="text-text-muted">■</span> Other 6%</span>
+            <span><span class="text-blue">■</span> Fisico 27%</span>
+            <span><span class="text-green">■</span> Umano 64%</span>
+            <span><span class="text-amber">■</span> Naturale 3%</span>
+            <span><span class="text-text-muted">■</span> Altro 6%</span>
           </div>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
-          <p class="text-sm font-bold mb-3">Low-income countries</p>
+          <p class="text-sm font-bold mb-3">Paesi a basso reddito</p>
           <div class="h-6 rounded-full overflow-hidden flex">
-            <div class="bg-blue h-full" style="width: 14%" title="Physical 14%"></div>
-            <div class="bg-green h-full" style="width: 41%" title="Human 41%"></div>
-            <div class="bg-amber h-full" style="width: 36%" title="Natural 36%"></div>
-            <div class="bg-accent-light h-full" style="width: 5%" title="Institutions"></div>
-            <div class="bg-red h-full" style="width: 4%" title="Technology"></div>
+            <div class="bg-blue h-full" style="width: 14%" title="Fisico 14%"></div>
+            <div class="bg-green h-full" style="width: 41%" title="Umano 41%"></div>
+            <div class="bg-amber h-full" style="width: 36%" title="Naturale 36%"></div>
+            <div class="bg-accent-light h-full" style="width: 5%" title="Istituzioni"></div>
+            <div class="bg-red h-full" style="width: 4%" title="Tecnologia"></div>
           </div>
           <div class="flex flex-wrap gap-3 mt-2 text-xs text-text-muted">
-            <span><span class="text-blue">■</span> Physical 14%</span>
-            <span><span class="text-green">■</span> Human 41%</span>
-            <span><span class="text-amber">■</span> Natural 36%</span>
-            <span><span class="text-text-muted">■</span> Other 9%</span>
+            <span><span class="text-blue">■</span> Fisico 14%</span>
+            <span><span class="text-green">■</span> Umano 41%</span>
+            <span><span class="text-amber">■</span> Naturale 36%</span>
+            <span><span class="text-text-muted">■</span> Altro 9%</span>
           </div>
         </div>
       </div>
 
       <div class="bg-card border-l-4 border-green rounded-r-xl p-5">
-        <p class="text-text leading-relaxed">The fact that <strong class="text-green">human capital</strong> accounts for ~64% of global wealth has enormous implications: investing in education and health isn't "social spending" — it's <strong>investment in a country's primary productive asset</strong>.</p>
+        <p class="text-text leading-relaxed">Il fatto che il <strong class="text-green">capitale umano</strong> rappresenti il ~64% della ricchezza globale ha implicazioni enormi: investire in istruzione e salute non è "spesa sociale" — è <strong>investimento nel principale asset produttivo</strong> di un paese.</p>
       </div>
     </section>
 
-    <!-- ═══ 5. HOW WE MEASURE ═══ -->
-    <section class="mb-14" id="how">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Method</p>
-      <h2 class="text-2xl font-bold mb-4">How we actually measure them</h2>
+    <!-- ═══ 5. COME SI MISURANO ═══ -->
+    <section class="mb-14" id="come">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Metodo</p>
+      <h2 class="text-2xl font-bold mb-4">Come si misurano concretamente</h2>
 
-      <p class="text-text-secondary leading-relaxed mb-5">Each dimension has its own indicators and reference organizations. Here's the map.</p>
+      <p class="text-text-secondary leading-relaxed mb-5">Ogni dimensione ha i suoi indicatori e le sue organizzazioni di riferimento. Ecco la mappa.</p>
 
       <div class="bg-surface border border-border rounded-xl overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
-              <th class="text-left px-4 py-3">Dimension</th>
-              <th class="text-left px-4 py-3">Key indicators</th>
-              <th class="text-left px-4 py-3">Who produces them</th>
+              <th class="text-left px-4 py-3">Dimensione</th>
+              <th class="text-left px-4 py-3">Indicatori principali</th>
+              <th class="text-left px-4 py-3">Chi li produce</th>
             </tr>
           </thead>
           <tbody class="text-text-secondary">
-            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Physical</td><td class="px-4 py-3">Gross Fixed Capital Formation, national asset inventories</td><td class="px-4 py-3">National statistics offices, World Bank</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Human</td><td class="px-4 py-3">Years of education, life expectancy, expected earnings, skills (PISA, PIAAC)</td><td class="px-4 py-3">UNDP (HDI), World Bank (HCI), OECD</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Natural</td><td class="px-4 py-3">Mineral/energy reserves, farmland, forest cover, ecosystem services</td><td class="px-4 py-3">World Bank (CWON), UNEP, FAO</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Institutions</td><td class="px-4 py-3">6 WGI indicators: Rule of law, Government effectiveness, Corruption control, Stability, Regulatory quality, Voice</td><td class="px-4 py-3">World Bank (WGI), Transparency International</td></tr>
-            <tr><td class="px-4 py-3 font-semibold text-text">Technology</td><td class="px-4 py-3">R&D spending (% GDP), patents, scientific publications, TFP</td><td class="px-4 py-3">OECD, WIPO, UNESCO, Penn World Table</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Fisico</td><td class="px-4 py-3">Gross Fixed Capital Formation, inventari nazionali degli asset</td><td class="px-4 py-3">Istituti statistici nazionali (ISTAT), World Bank</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Umano</td><td class="px-4 py-3">Anni di istruzione, aspettativa di vita, reddito atteso, competenze (PISA, PIAAC)</td><td class="px-4 py-3">UNDP (HDI), World Bank (HCI), OCSE</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Naturale</td><td class="px-4 py-3">Riserve minerarie/energetiche, terra coltivabile, copertura forestale, servizi ecosistemici</td><td class="px-4 py-3">World Bank (CWON), UNEP, FAO</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-3 font-semibold text-text">Istituzioni</td><td class="px-4 py-3">6 indicatori WGI: Stato di diritto, Efficacia governo, Controllo corruzione, Stabilità, Qualità regolazione, Voice</td><td class="px-4 py-3">World Bank (WGI), Transparency International</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-text">Tecnologia</td><td class="px-4 py-3">Spesa R&D (% PIL), brevetti, pubblicazioni scientifiche, TFP</td><td class="px-4 py-3">OCSE, WIPO, UNESCO, Penn World Table</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="bg-surface border border-border rounded-xl p-5 mt-5">
-        <p class="text-sm font-bold mb-2">Our formula</p>
-        <p class="text-lg font-mono font-bold text-accent-light text-center py-3">rGDP = (Physical + Human + Natural + Institutions + Technology) / 5</p>
-        <p class="text-text-secondary text-sm text-center">Each dimension normalized 0-100. Equal weights. That's it.</p>
+        <p class="text-sm font-bold mb-2">La nostra formula</p>
+        <p class="text-lg font-mono font-bold text-accent-light text-center py-3">rGDP = (Fisico + Umano + Naturale + Istituzioni + Tecnologia) / 5</p>
+        <p class="text-text-secondary text-sm text-center">Ogni dimensione normalizzata 0-100. Pesi uguali. Fine.</p>
       </div>
     </section>
 
-    <!-- ═══ 6. ALTERNATIVES ═══ -->
-    <section class="mb-14" id="alternatives">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Who else has tried</p>
-      <h2 class="text-2xl font-bold mb-4">Alternatives to GDP</h2>
+    <!-- ═══ 6. ALTERNATIVE ═══ -->
+    <section class="mb-14" id="alternative">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Chi ci ha provato</p>
+      <h2 class="text-2xl font-bold mb-4">Le alternative al PIL</h2>
 
-      <p class="text-text-secondary leading-relaxed mb-5">GDP will never be "replaced" — it's too convenient, too entrenched, too simple. But serious attempts to supplement or complement it exist.</p>
+      <p class="text-text-secondary leading-relaxed mb-5">Il PIL non verrà mai "sostituito" — è troppo comodo, troppo radicato, troppo semplice. Ma esistono tentativi seri di affiancarlo o completarlo.</p>
 
       <div class="space-y-3">
         <div class="bg-surface border border-border rounded-xl p-5">
           <h3 class="font-bold mb-1">HDI — Human Development Index</h3>
-          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNDP, since 1990.</strong> Combines: life expectancy, years of education, per capita income. Designed by <strong>Mahbub ul Haq</strong> with <strong>Amartya Sen</strong> <span class="text-amber font-semibold">(Nobel 1998)</span>. The best-known and most-used alternative.</p>
-          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">193 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Updated annually</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Scale 0-1</span></div>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNDP, dal 1990.</strong> Combina: aspettativa di vita, anni di istruzione, reddito pro capite. Ideato da <strong>Mahbub ul Haq</strong> con <strong>Amartya Sen</strong> <span class="text-amber font-semibold">(Nobel 1998)</span>. L'alternativa più nota e usata.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">193 paesi</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Aggiornato annualmente</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Scala 0-1</span></div>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <h3 class="font-bold mb-1">CWON — Changing Wealth of Nations</h3>
-          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">World Bank, editions 2006/2011/2018/2021.</strong> Decomposes total wealth into produced, natural, human, and net foreign assets. The most ambitious attempt to measure the <strong>stock</strong> (not the flow) of wealth.</p>
-          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">146 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Total wealth in $</span></div>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">World Bank, edizioni 2006/2011/2018/2021.</strong> Decompone la ricchezza totale in capitale prodotto, naturale, umano e attivi esteri netti. Il tentativo più ambizioso di misurare lo <strong>stock</strong> (non il flusso) della ricchezza.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">146 paesi</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Ricchezza totale in $</span></div>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <h3 class="font-bold mb-1">IWR — Inclusive Wealth Report</h3>
-          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNEP, since 2012.</strong> Includes produced, human and natural capital in a single number. Tries to measure <strong>sustainability</strong>: a country whose total wealth is declining is consuming its own future.</p>
-          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">140 countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Sustainability focus</span></div>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">UNEP, dal 2012.</strong> Include capitale prodotto, umano e naturale in un singolo numero. Cerca di misurare la <strong>sostenibilità</strong>: un paese la cui ricchezza totale decresce sta consumando il proprio futuro.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">140 paesi</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Focus sostenibilità</span></div>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <h3 class="font-bold mb-1">Better Life Index</h3>
-          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">OECD.</strong> 11 dimensions: housing, income, jobs, community, education, environment, civic engagement, health, life satisfaction, safety, work-life balance. <strong>Interactive:</strong> users choose how to weight each dimension.</p>
-          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">38 OECD countries</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Customizable</span></div>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">OCSE.</strong> 11 dimensioni: casa, reddito, lavoro, comunità, istruzione, ambiente, impegno civico, salute, soddisfazione di vita, sicurezza, equilibrio lavoro-vita. <strong>Interattivo:</strong> l'utente sceglie quanto pesa ogni dimensione.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">38 paesi OCSE</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Personalizzabile</span></div>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <h3 class="font-bold mb-1">GNH — Gross National Happiness</h3>
-          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Bhutan, since 1972.</strong> The most radical case: Bhutan officially replaced GDP with a "gross national happiness" index. Includes psychological wellbeing, health, time use, cultural vitality, good governance, ecology.</p>
-          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Bhutan only</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">9 dimensions</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Controversial but influential</span></div>
+          <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Bhutan, dal 1972.</strong> Il caso più radicale: il Bhutan ha ufficialmente sostituito il PIL con un indice di "felicità nazionale lorda". Include benessere psicologico, salute, uso del tempo, vitalità culturale, buon governo, ecologia.</p>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Solo Bhutan</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">9 dimensioni</span><span class="text-xs px-2 py-0.5 rounded-full bg-card text-text-muted">Controverso ma influente</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ 7. PARADOXES ═══ -->
-    <section class="mb-14" id="paradoxes">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Paradoxes</p>
-      <h2 class="text-2xl font-bold mb-4">When GDP lies</h2>
+    <!-- ═══ 7. PARADOSSI ═══ -->
+    <section class="mb-14" id="paradossi">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Paradossi</p>
+      <h2 class="text-2xl font-bold mb-4">Quando il PIL mente</h2>
 
-      <p class="text-text-secondary leading-relaxed mb-5">Some real-world cases where GDP tells a completely different story from reality.</p>
+      <p class="text-text-secondary leading-relaxed mb-5">Alcuni casi concreti in cui il PIL racconta una storia completamente diversa dalla realtà.</p>
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div class="bg-surface border border-border rounded-xl p-5">
           <p class="text-2xl mb-2">&#x1F1F3;&#x1F1EC;</p>
-          <h3 class="font-bold mb-2">The resource curse</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">Oil-rich countries (Nigeria, Venezuela) with seemingly decent GDP per capita but populations in misery. GDP rises when you extract oil, but <strong class="text-text">natural capital</strong> drops, <strong class="text-text">institutions</strong> corrode, and <strong class="text-text">human capital</strong> doesn't grow. Net result: the country gets poorer while "growing".</p>
+          <h3 class="font-bold mb-2">La maledizione delle risorse</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Paesi ricchi di petrolio (Nigeria, Venezuela) con PIL pro capite apparentemente decente ma popolazione in miseria. Il PIL sale quando estrai petrolio, ma il <strong class="text-text">capitale naturale</strong> scende, le <strong class="text-text">istituzioni</strong> si corrompono, e il <strong class="text-text">capitale umano</strong> non cresce. Netto: il paese si impoverisce "crescendo".</p>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <p class="text-2xl mb-2">&#x1F1EF;&#x1F1F5;</p>
-          <h3 class="font-bold mb-2">"Stagnant" Japan</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">Japanese GDP has barely moved for 30 years. Headlines call them "lost decades". But: quality of life is outstanding, crime is near-zero, health excellent, life expectancy record-breaking, infrastructure pristine. GDP captures none of this.</p>
+          <h3 class="font-bold mb-2">Il Giappone "stagnante"</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Il PIL giapponese è quasi fermo da 30 anni. I giornali parlano di "decenni perduti". Ma: la qualità della vita è altissima, la criminalità bassissima, la salute eccellente, l'aspettativa di vita record, le infrastrutture perfette. Il PIL non cattura niente di questo.</p>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <p class="text-2xl mb-2">&#x1F1EE;&#x1F1EA;</p>
-          <h3 class="font-bold mb-2">Ireland's leprechaun GDP</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">In 2015, Irish GDP grew 26% in a single year. Reason: tech multinationals shifted intellectual property to their Irish books for tax reasons. No Irish person woke up 26% richer. Paul Krugman coined the term "Leprechaun Economics" for this distortion.</p>
+          <h3 class="font-bold mb-2">Il PIL leprecauno dell'Irlanda</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Nel 2015 il PIL irlandese è cresciuto del 26% in un anno. Motivo: multinazionali tech che hanno spostato proprietà intellettuale nei loro bilanci irlandesi per ragioni fiscali. Nessun irlandese si è svegliato il 26% più ricco. Paul Krugman ha coniato il termine "Leprechaun Economics".</p>
         </div>
 
         <div class="bg-surface border border-border rounded-xl p-5">
           <p class="text-2xl mb-2">&#x1F310;</p>
-          <h3 class="font-bold mb-2">The invisible digital economy</h3>
-          <p class="text-text-secondary text-sm leading-relaxed">Wikipedia, open source, Google Maps, WhatsApp: services that create enormous value but that GDP struggles to capture because the consumer price is zero or near-zero. GDP measures monetary transactions — if there's no price, it doesn't exist.</p>
+          <h3 class="font-bold mb-2">L'economia digitale invisibile</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">Wikipedia, open source, Google Maps, WhatsApp: servizi che creano valore enorme ma che il PIL fatica a catturare perché il prezzo al consumatore è zero o quasi. Il PIL misura transazioni monetarie — se non c'è un prezzo, non esiste.</p>
         </div>
       </div>
     </section>
 
-    <!-- ═══ 8. SOURCES ═══ -->
-    <section class="mb-14" id="sources">
-      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Academic sources</p>
-      <h2 class="text-2xl font-bold mb-4">Where all this comes from</h2>
+    <!-- ═══ 8. FONTI ═══ -->
+    <section class="mb-14" id="fonti">
+      <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-3">Fonti accademiche</p>
+      <h2 class="text-2xl font-bold mb-4">Da dove viene tutto questo</h2>
 
-      <p class="text-text-secondary leading-relaxed mb-5">Full transparency: here are the primary sources behind the concepts and data. <strong class="text-text">Nothing is made up</strong>, but the synthesis and organization is ours.</p>
+      <p class="text-text-secondary leading-relaxed mb-5">Trasparenza totale: ecco le fonti primarie da cui derivano i concetti e i dati. <strong class="text-text">Niente è inventato</strong>, ma la sintesi e organizzazione è nostra.</p>
 
       <div class="bg-surface border border-border rounded-xl overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
-              <th class="text-left px-4 py-3">Author / Org</th>
-              <th class="text-left px-4 py-3">Work</th>
-              <th class="text-left px-4 py-3">Concept</th>
+              <th class="text-left px-4 py-3">Autore / Org</th>
+              <th class="text-left px-4 py-3">Opera</th>
+              <th class="text-left px-4 py-3">Concetto</th>
             </tr>
           </thead>
           <tbody class="text-text-secondary">
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Simon Kuznets</td><td class="px-4 py-2.5">"National Income, 1929-1932" (1934)</td><td class="px-4 py-2.5">Invented GDP, first to say it doesn't measure wellbeing</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Robert Solow <span class="text-amber">Nobel 1987</span></td><td class="px-4 py-2.5">"A Contribution to the Theory of Economic Growth" (1956)</td><td class="px-4 py-2.5">Growth model, Solow residual (technology as driver)</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Gary Becker <span class="text-amber">Nobel 1992</span></td><td class="px-4 py-2.5">"Human Capital" (1964)</td><td class="px-4 py-2.5">Human capital: education and health as productive investment</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Douglass North <span class="text-amber">Nobel 1993</span></td><td class="px-4 py-2.5">"Institutions, Institutional Change..." (1990)</td><td class="px-4 py-2.5">Institutions as fundamental determinant of performance</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Amartya Sen <span class="text-amber">Nobel 1998</span></td><td class="px-4 py-2.5">"Development as Freedom" (1999)</td><td class="px-4 py-2.5">Development as expansion of freedoms, not GDP growth</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Paul Romer <span class="text-amber">Nobel 2018</span></td><td class="px-4 py-2.5">"Endogenous Technological Change" (1990)</td><td class="px-4 py-2.5">Ideas as non-rival growth driver</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Acemoglu, Johnson & Robinson <span class="text-amber">Nobel 2024</span></td><td class="px-4 py-2.5">"Why Nations Fail" (2012)</td><td class="px-4 py-2.5">Why inclusive institutions create prosperity</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">"The Changing Wealth of Nations" (2021)</td><td class="px-4 py-2.5">Wealth decomposition: produced, human, natural capital</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNDP</td><td class="px-4 py-2.5">Human Development Report (annual, since 1990)</td><td class="px-4 py-2.5">HDI: composite health + education + income index</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">Worldwide Governance Indicators (WGI)</td><td class="px-4 py-2.5">6 institutional quality indicators, 200+ countries</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNEP</td><td class="px-4 py-2.5">Inclusive Wealth Report (2012-2018)</td><td class="px-4 py-2.5">Inclusive wealth: produced + human + natural capital</td></tr>
-            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">OECD</td><td class="px-4 py-2.5">Better Life Index</td><td class="px-4 py-2.5">11 wellbeing dimensions, interactive comparison</td></tr>
-            <tr><td class="px-4 py-2.5 font-semibold text-text">Herman Daly</td><td class="px-4 py-2.5">"Beyond Growth" (1996)</td><td class="px-4 py-2.5">Ecological economics: GDP ignores environmental degradation</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Simon Kuznets</td><td class="px-4 py-2.5">"National Income, 1929-1932" (1934)</td><td class="px-4 py-2.5">Inventore del PIL, e primo a dire che non misurava il benessere</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Robert Solow <span class="text-amber">Nobel 1987</span></td><td class="px-4 py-2.5">"A Contribution to the Theory of Economic Growth" (1956)</td><td class="px-4 py-2.5">Modello di crescita, residuo di Solow (tecnologia come motore)</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Gary Becker <span class="text-amber">Nobel 1992</span></td><td class="px-4 py-2.5">"Human Capital" (1964)</td><td class="px-4 py-2.5">Capitale umano: istruzione e salute come investimento produttivo</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Douglass North <span class="text-amber">Nobel 1993</span></td><td class="px-4 py-2.5">"Institutions, Institutional Change..." (1990)</td><td class="px-4 py-2.5">Istituzioni come determinante fondamentale della performance</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Amartya Sen <span class="text-amber">Nobel 1998</span></td><td class="px-4 py-2.5">"Development as Freedom" (1999)</td><td class="px-4 py-2.5">Sviluppo come espansione delle libertà, non crescita del PIL</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Paul Romer <span class="text-amber">Nobel 2018</span></td><td class="px-4 py-2.5">"Endogenous Technological Change" (1990)</td><td class="px-4 py-2.5">Le idee come motore non-rivale della crescita</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">Acemoglu, Johnson & Robinson <span class="text-amber">Nobel 2024</span></td><td class="px-4 py-2.5">"Why Nations Fail" (2012)</td><td class="px-4 py-2.5">Perché le istituzioni inclusive creano prosperità</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">"The Changing Wealth of Nations" (2021)</td><td class="px-4 py-2.5">Decomposizione ricchezza: capitale prodotto, umano, naturale</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNDP</td><td class="px-4 py-2.5">Human Development Report (annuale, dal 1990)</td><td class="px-4 py-2.5">HDI: indice composito salute + istruzione + reddito</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">World Bank</td><td class="px-4 py-2.5">Worldwide Governance Indicators (WGI)</td><td class="px-4 py-2.5">6 indicatori di qualità istituzionale, 200+ paesi</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">UNEP</td><td class="px-4 py-2.5">Inclusive Wealth Report (2012-2018)</td><td class="px-4 py-2.5">Ricchezza inclusiva: prodotto + umano + naturale</td></tr>
+            <tr class="border-b border-border/50"><td class="px-4 py-2.5 font-semibold text-text">OCSE</td><td class="px-4 py-2.5">Better Life Index</td><td class="px-4 py-2.5">11 dimensioni di benessere, confronto interattivo</td></tr>
+            <tr><td class="px-4 py-2.5 font-semibold text-text">Herman Daly</td><td class="px-4 py-2.5">"Beyond Growth" (1996)</td><td class="px-4 py-2.5">Economia ecologica: il PIL non contabilizza il degrado ambientale</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="bg-card border-l-4 border-accent rounded-r-xl p-5 mt-5">
-        <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Honesty note:</strong> the numerical data on wealth composition (percentages) is derived from the World Bank CWON report and presented here in simplified, indicative form. For precise and updated figures, consult the primary sources linked below.</p>
+        <p class="text-text-secondary text-sm leading-relaxed"><strong class="text-text">Nota di onestà:</strong> i dati numerici sulla composizione della ricchezza (percentuali) sono derivati dal report CWON della World Bank e presentati qui in forma semplificata e indicativa. Per i dati precisi e aggiornati, consultare le fonti primarie.</p>
       </div>
 
-      <!-- Links -->
       <div class="space-y-2 mt-5 text-sm">
         <a href="https://www.worldbank.org/en/publication/changing-wealth-of-nations" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
           <div class="font-semibold">World Bank — The Changing Wealth of Nations 2021</div>
-          <div class="text-text-muted text-xs">Wealth decomposition: produced, human, and natural capital for 146 countries</div>
+          <div class="text-text-muted text-xs">Decomposizione ricchezza: capitale prodotto, umano e naturale per 146 paesi</div>
         </a>
         <a href="https://hdr.undp.org/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
           <div class="font-semibold">UNDP — Human Development Reports</div>
-          <div class="text-text-muted text-xs">HDI: life expectancy, education, income for 193 countries</div>
+          <div class="text-text-muted text-xs">HDI: aspettativa di vita, istruzione, reddito per 193 paesi</div>
         </a>
         <a href="https://info.worldbank.org/governance/wgi/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
           <div class="font-semibold">World Bank — Worldwide Governance Indicators</div>
-          <div class="text-text-muted text-xs">6 governance dimensions for 200+ countries since 1996</div>
+          <div class="text-text-muted text-xs">6 dimensioni di governance per 200+ paesi dal 1996</div>
         </a>
         <a href="https://www.oecdbetterlifeindex.org/" target="_blank" class="block bg-surface border border-border rounded-lg p-4 hover:border-accent/30 transition-colors">
-          <div class="font-semibold">OECD — Better Life Index</div>
-          <div class="text-text-muted text-xs">11 wellbeing dimensions, interactive and customizable</div>
+          <div class="font-semibold">OCSE — Better Life Index</div>
+          <div class="text-text-muted text-xs">11 dimensioni di benessere, interattivo e personalizzabile</div>
         </a>
       </div>
     </section>
@@ -405,7 +396,7 @@ const locale = 'it';
     <!-- ═══ CTA ═══ -->
     <div class="text-center pt-4">
       <a href={`/${locale}/`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl text-lg transition-colors">
-        See the rankings &rarr;
+        Vai alla classifica &rarr;
       </a>
     </div>
   </div>
