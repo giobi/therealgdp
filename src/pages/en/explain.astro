@@ -1,0 +1,109 @@
+---
+import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icons.astro';
+import { t } from '@/i18n';
+const locale = 'en';
+---
+
+<Base title={t(locale, 'explain.title')} locale={locale}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">{t(locale, 'explain.sub')}</p>
+    <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-12">{t(locale, 'explain.title')}</h1>
+
+    <!-- Section 1: The problem -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-red/15 text-red flex items-center justify-center text-sm font-black">1</span>
+        {t(locale, 'explain.s1_title')}
+      </h2>
+      <div class="space-y-4 text-text-secondary leading-relaxed">
+        <p>{t(locale, 'explain.s1_p1')}</p>
+        <div class="bg-card border border-border rounded-xl p-5 text-sm italic">
+          <p>{t(locale, 'explain.s1_p2')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: What to measure -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-green/15 text-green flex items-center justify-center text-sm font-black">2</span>
+        {t(locale, 'explain.s2_title')}
+      </h2>
+      <p class="text-text-secondary leading-relaxed mb-6">{t(locale, 'explain.s2_p1')}</p>
+      <div class="space-y-3">
+        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
+          <Icon name="physical" size={24} class="text-blue shrink-0 mt-0.5" />
+          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_physical')}</p>
+        </div>
+        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
+          <Icon name="human" size={24} class="text-green shrink-0 mt-0.5" />
+          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_human')}</p>
+        </div>
+        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
+          <Icon name="natural" size={24} class="text-amber shrink-0 mt-0.5" />
+          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_natural')}</p>
+        </div>
+        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
+          <Icon name="institutions" size={24} class="text-accent-light shrink-0 mt-0.5" />
+          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_institutions')}</p>
+        </div>
+        <div class="flex gap-4 items-start bg-surface border border-border rounded-xl p-4">
+          <Icon name="technology" size={24} class="text-red shrink-0 mt-0.5" />
+          <p class="text-text-secondary text-sm">{t(locale, 'explain.s2_technology')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: How we score -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue/15 text-blue flex items-center justify-center text-sm font-black">3</span>
+        {t(locale, 'explain.s3_title')}
+      </h2>
+      <div class="space-y-4 text-text-secondary leading-relaxed">
+        <p>{t(locale, 'explain.s3_p1')}</p>
+        <div class="bg-surface border border-border rounded-xl p-6 text-center">
+          <p class="text-lg font-mono font-bold text-accent-light">
+            Real GDP = (Physical + Human + Natural + Institutions + Technology) / 5
+          </p>
+        </div>
+        <p>{t(locale, 'explain.s3_p2')}</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Why it matters -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-amber/15 text-amber flex items-center justify-center text-sm font-black">4</span>
+        {t(locale, 'explain.s4_title')}
+      </h2>
+      <div class="space-y-4 text-text-secondary leading-relaxed">
+        <p>{t(locale, 'explain.s4_p1')}</p>
+        <p>{t(locale, 'explain.s4_p2')}</p>
+        <div class="bg-card border border-amber/20 rounded-xl p-5 text-sm">
+          <p class="text-amber font-semibold">{t(locale, 'explain.s4_p3')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Caveats -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-accent/15 text-accent-light flex items-center justify-center text-sm font-black">5</span>
+        {t(locale, 'explain.s5_title')}
+      </h2>
+      <div class="space-y-4 text-text-secondary leading-relaxed">
+        <p>{t(locale, 'explain.s5_p1')}</p>
+        <p>{t(locale, 'explain.s5_p2')}</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="text-center pt-4">
+      <a href={`/${locale}/`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl text-lg transition-colors">
+        {t(locale, 'explain.back_to_rankings')} &rarr;
+      </a>
+    </div>
+  </div>
+</Base>

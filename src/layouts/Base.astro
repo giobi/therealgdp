@@ -35,7 +35,6 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || "";
   <link rel="alternate" hreflang={otherLocale} href={otherLocalePath} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" is:inline></script>
 </head>
 <body class="bg-bg text-text font-[Inter,system-ui,sans-serif] antialiased min-h-screen flex flex-col">
   
@@ -45,9 +44,10 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || "";
       <a href={`/${locale}/`} class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
         <span class="text-accent-light">■</span> The Real GDP
       </a>
-      <div class="flex items-center gap-6 text-sm font-medium">
-        <a href={`/${locale}/`} class="text-text-secondary hover:text-text transition-colors">{t(locale, 'nav.home')}</a>
-        <a href={`/${locale}/methodology`} class="text-text-secondary hover:text-text transition-colors">{t(locale, 'nav.methodology')}</a>
+      <div class="flex items-center gap-4 sm:gap-6 text-sm font-medium">
+        <a href={`/${locale}/`} class="text-text-secondary hover:text-text transition-colors hidden sm:block">{t(locale, 'nav.home')}</a>
+        <a href={`/${locale}/explain`} class="text-text-secondary hover:text-text transition-colors">{t(locale, 'nav.explain')}</a>
+        <a href={`/${locale}/methodology`} class="text-text-secondary hover:text-text transition-colors hidden sm:block">{t(locale, 'nav.methodology')}</a>
         <a href={otherLocalePath} class="px-2 py-0.5 rounded border border-border text-xs font-bold text-accent-light hover:bg-accent/10 transition-colors">
           {t(locale, 'nav.lang')}
         </a>
@@ -65,6 +65,7 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || "";
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
       <p>{t(locale, 'footer.built')}</p>
       <div class="flex gap-4">
+        <a href={`/${locale}/explain`} class="hover:text-text transition-colors">{t(locale, 'nav.explain')}</a>
         <a href={`/${locale}/methodology`} class="hover:text-text transition-colors">{t(locale, 'footer.methodology')}</a>
         <a href="https://github.com/giobi/therealgdp" target="_blank" class="hover:text-text transition-colors">GitHub</a>
       </div>

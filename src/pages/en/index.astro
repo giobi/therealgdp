@@ -11,47 +11,116 @@ const ranked = countries
     realGdp: Math.round((c.physical + c.human + c.natural + c.institutions + c.technology) / 5 * 10) / 10
   }))
   .sort((a, b) => b.realGdp - a.realGdp);
+
+// Top 3 per dimension for slideshow
+const dims = ['physical', 'human', 'natural', 'institutions', 'technology'] as const;
+const dimColors = { physical: 'blue', human: 'green', natural: 'amber', institutions: 'accent-light', technology: 'red' };
+const dimLabels = {
+  physical: t(locale, 'home.slideshow_physical'),
+  human: t(locale, 'home.slideshow_human'),
+  natural: t(locale, 'home.slideshow_natural'),
+  institutions: t(locale, 'home.slideshow_institutions'),
+  technology: t(locale, 'home.slideshow_technology'),
+};
+const topByDim = Object.fromEntries(
+  dims.map(d => [d, [...countries].sort((a, b) => (b as any)[d] - (a as any)[d]).slice(0, 5)])
+);
+
+// Max GDP for scaling the GDP bar
+const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
 ---
 
 <Base title={t(locale, 'home.hero_title')} locale={locale}>
+
+  <!-- ═══ HERO ═══ -->
   <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-teal/5 pointer-events-none"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-12 relative">
-      <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">{t(locale, 'site.tagline')}</p>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-4">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-teal/5 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-16 relative text-center">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-6">
         The <span class="text-accent-light">Real</span> GDP
       </h1>
-      <p class="text-text-secondary text-lg max-w-2xl leading-relaxed">{t(locale, 'home.hero_sub')}</p>
-      <div class="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-px bg-border rounded-xl overflow-hidden max-w-2xl">
-        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
-          <Icon name="physical" size={20} class="text-blue" />
-          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Physical</div>
-        </div>
-        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
-          <Icon name="human" size={20} class="text-green" />
-          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Human</div>
-        </div>
-        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
-          <Icon name="natural" size={20} class="text-amber" />
-          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Natural</div>
-        </div>
-        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
-          <Icon name="institutions" size={20} class="text-accent-light" />
-          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Institutions</div>
-        </div>
-        <div class="bg-surface p-3 flex flex-col items-center gap-1.5">
-          <Icon name="technology" size={20} class="text-red" />
-          <div class="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Technology</div>
+      <p class="text-text-secondary text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        {t(locale, 'home.hero_sub')}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#rankings" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl text-lg transition-colors">
+          {t(locale, 'home.hero_cta_data')} <span class="text-xl">&darr;</span>
+        </a>
+        <a href={`/${locale}/explain`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-card hover:bg-surface border border-border text-text-secondary font-bold rounded-xl text-lg transition-colors">
+          {t(locale, 'home.hero_cta_explain')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DIMENSIONS OVERVIEW (Card 1) ═══ -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
+    <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold mb-2">{t(locale, 'home.dimensions_title')}</h2>
+      <p class="text-text-muted text-sm mb-6">{t(locale, 'home.dimensions_sub')}</p>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+        {dims.map(d => (
+          <div class="flex flex-col items-center gap-2 p-4 rounded-xl bg-card/50">
+            <Icon name={d} size={28} class={`text-${dimColors[d]}`} />
+            <div class={`text-xs font-bold uppercase tracking-wider text-${dimColors[d]}`}>
+              {t(locale, `home.col_${d}`)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLIDESHOW (Card 2) ═══ -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8 overflow-hidden">
+      <h2 class="text-xl font-bold mb-6">{t(locale, 'home.slideshow_title')}</h2>
+      <div class="relative" id="slideshow-container">
+        {dims.map((d, idx) => (
+          <div class={`slideshow-slide ${idx === 0 ? '' : 'hidden'}`} data-dim={d}>
+            <div class="flex items-center gap-3 mb-4">
+              <Icon name={d} size={24} class={`text-${dimColors[d]}`} />
+              <span class={`text-lg font-bold text-${dimColors[d]}`}>{dimLabels[d]}</span>
+            </div>
+            <div class="space-y-3">
+              {(topByDim as any)[d].map((c: any, rank: number) => (
+                <a href={`/${locale}/country/${c.code.toLowerCase()}`}
+                   class="flex items-center gap-4 p-3 rounded-lg hover:bg-card/80 transition-colors group">
+                  <span class="text-text-muted font-mono text-sm w-6 text-right">{rank + 1}</span>
+                  <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
+                       srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
+                       width="24" height="18" alt={c.code}
+                       class="rounded-sm shadow-sm" loading="lazy" />
+                  <span class="font-semibold group-hover:text-accent-light transition-colors flex-1">
+                    {locale === 'en' ? c.name_en : c.name_it}
+                  </span>
+                  <div class="flex items-center gap-2 w-32">
+                    <div class="flex-1 h-2 bg-border rounded-full overflow-hidden">
+                      <div class={`h-full bg-${dimColors[d]} rounded-full`} style={`width: ${(c as any)[d]}%`}></div>
+                    </div>
+                    <span class={`font-bold tabular-nums text-sm text-${dimColors[d]}`}>{(c as any)[d]}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+        <!-- Dots navigation -->
+        <div class="flex justify-center gap-2 mt-6" id="slideshow-dots">
+          {dims.map((d, idx) => (
+            <button data-idx={idx} class={`w-2.5 h-2.5 rounded-full transition-colors ${idx === 0 ? 'bg-accent-light' : 'bg-border hover:bg-text-muted'}`}></button>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+  <!-- ═══ RANKINGS TABLE ═══ -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" id="rankings">
     <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-6 gap-4">
       <div>
-        <h2 class="text-xl font-bold">{t(locale, 'home.ranking_title')}</h2>
-        <p class="text-text-muted text-sm mt-1">{t(locale, 'home.ranking_sub')}</p>
+        <h2 class="text-2xl font-black tracking-tight">{t(locale, 'home.ranking_title')}</h2>
+        <p class="text-text-muted text-sm mt-1 max-w-lg">{t(locale, 'home.ranking_sub')}</p>
       </div>
       <div class="flex gap-1 text-xs font-semibold flex-wrap" id="region-filters">
         <button data-region="all" class="px-3 py-1.5 rounded-full bg-accent/15 text-accent-light border border-accent/30">All</button>
@@ -61,60 +130,76 @@ const ranked = countries
         <button data-region="africa" class="px-3 py-1.5 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">Africa</button>
       </div>
     </div>
-    <div class="bg-surface border border-border rounded-xl overflow-x-auto">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-border text-[10px] uppercase tracking-wider text-text-muted font-semibold">
-            <th class="text-left px-4 py-3 w-10">#</th>
-            <th class="text-left px-4 py-3">Country</th>
-            <th class="text-center px-3 py-3 text-accent-light">Real GDP</th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="physical" size={14} class="text-blue inline-block" /></th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="human" size={14} class="text-green inline-block" /></th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="natural" size={14} class="text-amber inline-block" /></th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="institutions" size={14} class="text-accent-light inline-block" /></th>
-            <th class="text-center px-2 py-3 hidden sm:table-cell"><Icon name="technology" size={14} class="text-red inline-block" /></th>
-            <th class="text-right px-4 py-3 hidden md:table-cell">GDP/cap</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ranked.map((c, i) => (
-            <tr class="border-b border-border/50 hover:bg-card/50 transition-colors country-row"
-                data-region={c.region}>
-              <td class="px-4 py-2.5 text-text-muted font-mono text-xs rank-cell">{i + 1}</td>
-              <td class="px-4 py-2.5">
-                <a href={`/${locale}/country/${c.code.toLowerCase()}`} class="flex items-center gap-2.5 hover:text-accent-light transition-colors">
-                  <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
-                       srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
-                       width="20" height="15" alt={c.code}
-                       class="rounded-sm shadow-sm" loading="lazy" />
-                  <span class="font-semibold">{c.name_en}</span>
-                </a>
-              </td>
-              <td class="text-center px-3 py-2.5">
-                <div class="inline-flex items-center gap-2">
-                  <div class="w-14 h-1.5 bg-border rounded-full overflow-hidden hidden sm:block">
-                    <div class="h-full bg-accent-light rounded-full" style={`width: ${c.realGdp}%`}></div>
-                  </div>
-                  <span class="font-bold text-accent-light tabular-nums">{c.realGdp}</span>
-                </div>
-              </td>
-              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-blue/80 text-xs">{c.physical}</td>
-              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-green/80 text-xs">{c.human}</td>
-              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-amber/80 text-xs">{c.natural}</td>
-              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-accent-light/80 text-xs">{c.institutions}</td>
-              <td class="text-center px-2 py-2.5 hidden sm:table-cell tabular-nums text-red/80 text-xs">{c.technology}</td>
-              <td class="text-right px-4 py-2.5 hidden md:table-cell text-text-muted tabular-nums text-xs">
-                ${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+    <!-- Legend -->
+    <div class="flex flex-wrap gap-4 mb-4 text-xs">
+      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-blue"></span> Physical</span>
+      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-green"></span> Human</span>
+      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber"></span> Natural</span>
+      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-accent-light"></span> Institutions</span>
+      <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red"></span> Technology</span>
+      <span class="flex items-center gap-1.5 ml-4"><span class="w-3 h-3 rounded-sm bg-text-muted/30"></span> GDP/cap (PPP)</span>
     </div>
-    <p class="text-text-muted text-xs mt-4 text-center">Data sources: World Bank (WDI, WGI, CWON), UNDP (HDI/HCI), WIPO. Scores normalized 0-100. <a href={`/${locale}/methodology`} class="text-accent-light hover:underline">Full methodology</a></p>
+
+    <div class="bg-surface border border-border rounded-xl overflow-hidden">
+      {ranked.map((c, i) => {
+        const total = c.physical + c.human + c.natural + c.institutions + c.technology;
+        const maxTotal = 500; // theoretical max
+        const barWidth = (total / maxTotal) * 100;
+        const gdpWidth = (c.gdp_per_capita_ppp / maxGdp) * 100;
+        // Segment percentages within the bar
+        const pPhys = (c.physical / total) * 100;
+        const pHum = (c.human / total) * 100;
+        const pNat = (c.natural / total) * 100;
+        const pInst = (c.institutions / total) * 100;
+        const pTech = (c.technology / total) * 100;
+        return (
+          <a href={`/${locale}/country/${c.code.toLowerCase()}`}
+             class="country-row flex items-center gap-3 px-4 py-3 border-b border-border/50 hover:bg-card/50 transition-colors group"
+             data-region={c.region}>
+            <!-- Rank -->
+            <span class="rank-cell text-text-muted font-mono text-xs w-6 text-right shrink-0">{i + 1}</span>
+            <!-- Flag + Name -->
+            <div class="flex items-center gap-2.5 w-36 sm:w-44 shrink-0">
+              <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
+                   srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
+                   width="20" height="15" alt={c.code}
+                   class="rounded-sm shadow-sm" loading="lazy" />
+              <span class="font-semibold text-sm group-hover:text-accent-light transition-colors truncate">{c.name_en}</span>
+            </div>
+            <!-- Score -->
+            <span class="font-black text-accent-light tabular-nums text-sm w-10 text-right shrink-0">{c.realGdp}</span>
+            <!-- Stacked bar -->
+            <div class="flex-1 min-w-0 flex flex-col gap-1">
+              <div class="h-4 rounded-full overflow-hidden flex" style={`width: ${barWidth}%`}
+                   title={`Physical ${c.physical} | Human ${c.human} | Natural ${c.natural} | Institutions ${c.institutions} | Technology ${c.technology}`}>
+                <div class="bg-blue h-full" style={`width: ${pPhys}%`}></div>
+                <div class="bg-green h-full" style={`width: ${pHum}%`}></div>
+                <div class="bg-amber h-full" style={`width: ${pNat}%`}></div>
+                <div class="bg-accent-light h-full" style={`width: ${pInst}%`}></div>
+                <div class="bg-red h-full" style={`width: ${pTech}%`}></div>
+              </div>
+              <!-- GDP bar underneath -->
+              <div class="h-1.5 rounded-full overflow-hidden bg-border/50" title={`GDP/cap PPP: $${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k`}>
+                <div class="h-full bg-text-muted/30 rounded-full" style={`width: ${gdpWidth}%`}></div>
+              </div>
+            </div>
+            <!-- GDP label -->
+            <span class="text-text-muted tabular-nums text-xs w-14 text-right shrink-0 hidden sm:block">
+              ${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k
+            </span>
+          </a>
+        );
+      })}
+    </div>
+    <p class="text-text-muted text-xs mt-4 text-center">
+      Data: World Bank, UNDP, WIPO. Scores 0-100. <a href={`/${locale}/methodology`} class="text-accent-light hover:underline">Methodology</a>
+    </p>
   </section>
 
+  <!-- ═══ SCRIPTS ═══ -->
   <script is:inline>
+    // Region filter
     document.getElementById('region-filters')?.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
@@ -131,5 +216,40 @@ const ranked = countries
         if (show) { rank++; row.querySelector('.rank-cell').textContent = rank; }
       });
     });
+
+    // Slideshow auto-rotation
+    (function() {
+      const slides = document.querySelectorAll('.slideshow-slide');
+      const dots = document.querySelectorAll('#slideshow-dots button');
+      if (!slides.length) return;
+      let current = 0;
+      let timer;
+
+      function show(idx) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('hidden', i !== idx);
+        });
+        dots.forEach((d, i) => {
+          d.className = i === idx
+            ? 'w-2.5 h-2.5 rounded-full transition-colors bg-accent-light'
+            : 'w-2.5 h-2.5 rounded-full transition-colors bg-border hover:bg-text-muted';
+        });
+        current = idx;
+      }
+
+      function next() {
+        show((current + 1) % slides.length);
+      }
+
+      timer = setInterval(next, 4000);
+
+      document.getElementById('slideshow-dots')?.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        clearInterval(timer);
+        show(parseInt(btn.dataset.idx));
+        timer = setInterval(next, 4000);
+      });
+    })();
   </script>
 </Base>
