@@ -12,10 +12,16 @@ const ranked = countries
   }))
   .sort((a, b) => b.realGdp - a.realGdp);
 
-// Top 3 per dimension for slideshow
 const dims = ['physical', 'human', 'natural', 'institutions', 'technology'] as const;
 const dimColors = { physical: 'blue', human: 'green', natural: 'amber', institutions: 'accent-light', technology: 'red' };
 const dimLabels = {
+  physical: t(locale, 'home.col_physical'),
+  human: t(locale, 'home.col_human'),
+  natural: t(locale, 'home.col_natural'),
+  institutions: t(locale, 'home.col_institutions'),
+  technology: t(locale, 'home.col_technology'),
+};
+const slideshowLabels = {
   physical: t(locale, 'home.slideshow_physical'),
   human: t(locale, 'home.slideshow_human'),
   natural: t(locale, 'home.slideshow_natural'),
@@ -26,7 +32,6 @@ const topByDim = Object.fromEntries(
   dims.map(d => [d, [...countries].sort((a, b) => (b as any)[d] - (a as any)[d]).slice(0, 5)])
 );
 
-// Max GDP for scaling the GDP bar
 const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
 ---
 
@@ -35,7 +40,7 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
   <!-- ═══ HERO ═══ -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-teal/5 pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-16 relative text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-14 relative text-center">
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-6">
         The <span class="text-accent-light">Real</span> GDP
       </h1>
@@ -53,65 +58,89 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
     </div>
   </section>
 
-  <!-- ═══ DIMENSIONS OVERVIEW (Card 1) ═══ -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
-    <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8">
-      <h2 class="text-xl font-bold mb-2">{t(locale, 'home.dimensions_title')}</h2>
-      <p class="text-text-muted text-sm mb-6">{t(locale, 'home.dimensions_sub')}</p>
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-        {dims.map(d => (
-          <div class="flex flex-col items-center gap-2 p-4 rounded-xl bg-card/50">
-            <Icon name={d} size={28} class={`text-${dimColors[d]}`} />
-            <div class={`text-xs font-bold uppercase tracking-wider text-${dimColors[d]}`}>
-              {t(locale, `home.col_${d}`)}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- ═══ TWO CARDS SIDE BY SIDE ═══ -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="grid md:grid-cols-2 gap-6">
 
-  <!-- ═══ SLIDESHOW (Card 2) ═══ -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
-    <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8 overflow-hidden">
-      <h2 class="text-xl font-bold mb-6">{t(locale, 'home.slideshow_title')}</h2>
-      <div class="relative" id="slideshow-container">
+      <!-- LEFT CARD: Dimension explainer slideshow -->
+      <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8" id="dim-explainer">
+        <h2 class="text-lg font-bold mb-1">{t(locale, 'home.dimensions_title')}</h2>
+        <p class="text-text-muted text-sm mb-6">{t(locale, 'home.dimensions_sub')}</p>
+
         {dims.map((d, idx) => (
-          <div class={`slideshow-slide ${idx === 0 ? '' : 'hidden'}`} data-dim={d}>
-            <div class="flex items-center gap-3 mb-4">
-              <Icon name={d} size={24} class={`text-${dimColors[d]}`} />
+          <div class={`dim-explain-slide ${idx === 0 ? '' : 'hidden'}`} data-dim={d}>
+            <div class="flex items-center gap-3 mb-3">
+              <div class={`w-10 h-10 rounded-xl bg-${dimColors[d]}/15 flex items-center justify-center`}>
+                <Icon name={d} size={22} class={`text-${dimColors[d]}`} />
+              </div>
               <span class={`text-lg font-bold text-${dimColors[d]}`}>{dimLabels[d]}</span>
             </div>
-            <div class="space-y-3">
+            <p class="text-text-secondary text-sm leading-relaxed">
+              {t(locale, `home.dim_${d}_desc`)}
+            </p>
+          </div>
+        ))}
+
+        <!-- Dimension dots/tabs -->
+        <div class="flex justify-center gap-1.5 mt-6" id="dim-explain-dots">
+          {dims.map((d, idx) => (
+            <button data-idx={idx} data-dim={d}
+              class={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${idx === 0 ? `bg-${dimColors[d]}/20` : 'bg-card hover:bg-card/80'}`}>
+              <Icon name={d} size={16} class={idx === 0 ? `text-${dimColors[d]}` : 'text-text-muted'} />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- RIGHT CARD: Mini-rankings slideshow (synced) -->
+      <div class="bg-surface border border-border rounded-2xl p-6 sm:p-8" id="dim-rankings">
+        <h2 class="text-lg font-bold mb-1">{t(locale, 'home.slideshow_title')}</h2>
+
+        {dims.map((d, idx) => (
+          <div class={`dim-rank-slide ${idx === 0 ? '' : 'hidden'}`} data-dim={d}>
+            <!-- Badge linking to left card -->
+            <button class="dim-badge text-xs font-semibold px-3 py-1 rounded-full mb-4 inline-flex items-center gap-1.5 cursor-pointer transition-colors"
+                    data-target-dim={d}
+                    class:list={[`bg-${dimColors[d]}/10 text-${dimColors[d]} border border-${dimColors[d]}/25 hover:bg-${dimColors[d]}/20`]}>
+              <Icon name={d} size={12} class={`text-${dimColors[d]}`} />
+              {slideshowLabels[d]} &mdash; <span class="opacity-70">{t(locale, 'home.slideshow_badge')}</span>
+            </button>
+
+            <div class="space-y-2">
               {(topByDim as any)[d].map((c: any, rank: number) => (
                 <a href={`/${locale}/country/${c.code.toLowerCase()}`}
-                   class="flex items-center gap-4 p-3 rounded-lg hover:bg-card/80 transition-colors group">
-                  <span class="text-text-muted font-mono text-sm w-6 text-right">{rank + 1}</span>
+                   class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-card/80 transition-colors group">
+                  <span class="text-text-muted font-mono text-xs w-5 text-right">{rank + 1}</span>
                   <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
                        srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
-                       width="24" height="18" alt={c.code}
+                       width="22" height="16" alt={c.code}
                        class="rounded-sm shadow-sm" loading="lazy" />
-                  <span class="font-semibold group-hover:text-accent-light transition-colors flex-1">
-                    {locale === 'en' ? c.name_it : c.name_it}
+                  <span class="font-semibold text-sm group-hover:text-accent-light transition-colors flex-1 truncate">
+                    {c.name_it}
                   </span>
-                  <div class="flex items-center gap-2 w-32">
+                  <div class="flex items-center gap-2 w-28">
                     <div class="flex-1 h-2 bg-border rounded-full overflow-hidden">
                       <div class={`h-full bg-${dimColors[d]} rounded-full`} style={`width: ${(c as any)[d]}%`}></div>
                     </div>
-                    <span class={`font-bold tabular-nums text-sm text-${dimColors[d]}`}>{(c as any)[d]}</span>
+                    <span class={`font-bold tabular-nums text-xs text-${dimColors[d]}`}>{(c as any)[d]}</span>
                   </div>
                 </a>
               ))}
             </div>
           </div>
         ))}
-        <!-- Dots navigation -->
-        <div class="flex justify-center gap-2 mt-6" id="slideshow-dots">
+
+        <!-- Synced dots -->
+        <div class="flex justify-center gap-1.5 mt-5" id="dim-rank-dots">
           {dims.map((d, idx) => (
-            <button data-idx={idx} class={`w-2.5 h-2.5 rounded-full transition-colors ${idx === 0 ? 'bg-accent-light' : 'bg-border hover:bg-text-muted'}`}></button>
+            <button data-idx={idx} data-dim={d}
+              class={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${idx === 0 ? `bg-${dimColors[d]}/20` : 'bg-card hover:bg-card/80'}`}>
+              <Icon name={d} size={16} class={idx === 0 ? `text-${dimColors[d]}` : 'text-text-muted'} />
+            </button>
           ))}
         </div>
       </div>
+
     </div>
   </section>
 
@@ -138,16 +167,15 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber"></span> Natural</span>
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-accent-light"></span> Institutions</span>
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red"></span> Technology</span>
-      <span class="flex items-center gap-1.5 ml-4"><span class="w-3 h-3 rounded-sm bg-text-muted/30"></span> GDP/cap (PPP)</span>
+      <span class="flex items-center gap-1.5 ml-4"><span class="w-3 h-3 rounded-sm bg-offwhite/25"></span> GDP/cap (PPP)</span>
     </div>
 
     <div class="bg-surface border border-border rounded-xl overflow-hidden">
       {ranked.map((c, i) => {
         const total = c.physical + c.human + c.natural + c.institutions + c.technology;
-        const maxTotal = 500; // theoretical max
+        const maxTotal = 500;
         const barWidth = (total / maxTotal) * 100;
         const gdpWidth = (c.gdp_per_capita_ppp / maxGdp) * 100;
-        // Segment percentages within the bar
         const pPhys = (c.physical / total) * 100;
         const pHum = (c.human / total) * 100;
         const pNat = (c.natural / total) * 100;
@@ -157,9 +185,7 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
           <a href={`/${locale}/country/${c.code.toLowerCase()}`}
              class="country-row flex items-center gap-3 px-4 py-3 border-b border-border/50 hover:bg-card/50 transition-colors group"
              data-region={c.region}>
-            <!-- Rank -->
             <span class="rank-cell text-text-muted font-mono text-xs w-6 text-right shrink-0">{i + 1}</span>
-            <!-- Flag + Name -->
             <div class="flex items-center gap-2.5 w-36 sm:w-44 shrink-0">
               <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
                    srcset={`https://flagcdn.com/w80/${c.code.toLowerCase()}.png 2x`}
@@ -167,10 +193,9 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
                    class="rounded-sm shadow-sm" loading="lazy" />
               <span class="font-semibold text-sm group-hover:text-accent-light transition-colors truncate">{c.name_it}</span>
             </div>
-            <!-- Score -->
             <span class="font-black text-accent-light tabular-nums text-sm w-10 text-right shrink-0">{c.realGdp}</span>
-            <!-- Stacked bar -->
-            <div class="flex-1 min-w-0 flex flex-col gap-1">
+            <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+              <!-- Stacked Real GDP bar -->
               <div class="h-4 rounded-full overflow-hidden flex" style={`width: ${barWidth}%`}
                    title={`Physical ${c.physical} | Human ${c.human} | Natural ${c.natural} | Institutions ${c.institutions} | Technology ${c.technology}`}>
                 <div class="bg-blue h-full" style={`width: ${pPhys}%`}></div>
@@ -179,13 +204,12 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
                 <div class="bg-accent-light h-full" style={`width: ${pInst}%`}></div>
                 <div class="bg-red h-full" style={`width: ${pTech}%`}></div>
               </div>
-              <!-- GDP bar underneath -->
-              <div class="h-1.5 rounded-full overflow-hidden bg-border/50" title={`GDP/cap PPP: $${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k`}>
-                <div class="h-full bg-text-muted/30 rounded-full" style={`width: ${gdpWidth}%`}></div>
+              <!-- GDP bar (offwhite) -->
+              <div class="h-2 rounded-full overflow-hidden" title={`GDP/cap PPP: $${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k`}>
+                <div class="h-full bg-offwhite/20 rounded-full" style={`width: ${gdpWidth}%`}></div>
               </div>
             </div>
-            <!-- GDP label -->
-            <span class="text-text-muted tabular-nums text-xs w-14 text-right shrink-0 hidden sm:block">
+            <span class="text-offwhite/50 tabular-nums text-xs w-14 text-right shrink-0 hidden sm:block">
               ${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k
             </span>
           </a>
@@ -217,38 +241,72 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
       });
     });
 
-    // Slideshow auto-rotation
+    // Synced dual-slideshow
     (function() {
-      const slides = document.querySelectorAll('.slideshow-slide');
-      const dots = document.querySelectorAll('#slideshow-dots button');
-      if (!slides.length) return;
+      const explainSlides = document.querySelectorAll('.dim-explain-slide');
+      const rankSlides = document.querySelectorAll('.dim-rank-slide');
+      const explainDots = document.querySelectorAll('#dim-explain-dots button');
+      const rankDots = document.querySelectorAll('#dim-rank-dots button');
+      if (!explainSlides.length) return;
+
+      const dimColorMap = {
+        physical: 'blue', human: 'green', natural: 'amber',
+        institutions: 'accent-light', technology: 'red'
+      };
+
       let current = 0;
       let timer;
 
       function show(idx) {
-        slides.forEach((s, i) => {
-          s.classList.toggle('hidden', i !== idx);
-        });
-        dots.forEach((d, i) => {
-          d.className = i === idx
-            ? 'w-2.5 h-2.5 rounded-full transition-colors bg-accent-light'
-            : 'w-2.5 h-2.5 rounded-full transition-colors bg-border hover:bg-text-muted';
+        const dim = explainSlides[idx]?.dataset.dim;
+        const color = dimColorMap[dim] || 'accent-light';
+
+        explainSlides.forEach((s, i) => s.classList.toggle('hidden', i !== idx));
+        rankSlides.forEach((s, i) => s.classList.toggle('hidden', i !== idx));
+
+        [explainDots, rankDots].forEach(dots => {
+          dots.forEach((d, i) => {
+            const btnDim = d.dataset.dim;
+            const btnColor = dimColorMap[btnDim] || 'accent-light';
+            if (i === idx) {
+              d.className = `w-8 h-8 rounded-lg flex items-center justify-center transition-colors bg-${btnColor}/20`;
+              d.querySelector('svg')?.setAttribute('class', `text-${btnColor}`);
+            } else {
+              d.className = 'w-8 h-8 rounded-lg flex items-center justify-center transition-colors bg-card hover:bg-card/80';
+              d.querySelector('svg')?.setAttribute('class', 'text-text-muted');
+            }
+          });
         });
         current = idx;
       }
 
-      function next() {
-        show((current + 1) % slides.length);
-      }
+      function next() { show((current + 1) % explainSlides.length); }
+      timer = setInterval(next, 5000);
 
-      timer = setInterval(next, 4000);
-
-      document.getElementById('slideshow-dots')?.addEventListener('click', (e) => {
+      function handleDotClick(e) {
         const btn = e.target.closest('button');
-        if (!btn) return;
+        if (!btn || !btn.dataset.idx) return;
         clearInterval(timer);
         show(parseInt(btn.dataset.idx));
-        timer = setInterval(next, 4000);
+        timer = setInterval(next, 5000);
+      }
+
+      document.getElementById('dim-explain-dots')?.addEventListener('click', handleDotClick);
+      document.getElementById('dim-rank-dots')?.addEventListener('click', handleDotClick);
+
+      // Badge click scrolls to left card and switches dimension
+      document.querySelectorAll('.dim-badge').forEach(badge => {
+        badge.addEventListener('click', (e) => {
+          e.preventDefault();
+          const dim = badge.dataset.targetDim;
+          const idx = [...explainSlides].findIndex(s => s.dataset.dim === dim);
+          if (idx >= 0) {
+            clearInterval(timer);
+            show(idx);
+            timer = setInterval(next, 5000);
+            document.getElementById('dim-explainer')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
       });
     })();
   </script>
