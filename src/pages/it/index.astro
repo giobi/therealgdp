@@ -33,6 +33,14 @@ const topByDim = Object.fromEntries(
 );
 
 const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
+const minGdp = Math.min(...countries.map(c => c.gdp_per_capita_ppp));
+// Normalize GDP to 0-100 scale, compute gap (rGDP - GDP_norm)
+// Positive gap = "richer than GDP says", Negative = "GDP inflated vs real wealth"
+const rankedWithGap = ranked.map(c => {
+  const gdpNorm = Math.round((c.gdp_per_capita_ppp - minGdp) / (maxGdp - minGdp) * 1000) / 10;
+  const gap = Math.round((c.realGdp - gdpNorm) * 10) / 10;
+  return { ...c, gdpNorm, gap };
+});
 ---
 
 <Base title={t(locale, 'home.hero_title')} locale={locale}>
@@ -175,6 +183,7 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
       <span class="text-text-muted py-1 mr-1">Sort by:</span>
       <button data-sort="rgdp" class="sort-btn px-2.5 py-1 rounded-full bg-accent/15 text-accent-light border border-accent/30">rGDP</button>
       <button data-sort="gdp" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-accent/30">GDP/cap</button>
+      <button data-sort="absgap" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-teal/30 hover:text-teal">Gap rGDP vs GDP</button>
       <button data-sort="physical" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-blue/30 hover:text-blue">Physical</button>
       <button data-sort="human" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-green/30 hover:text-green">Human</button>
       <button data-sort="natural" class="sort-btn px-2.5 py-1 rounded-full bg-card text-text-muted border border-border hover:border-amber/30 hover:text-amber">Natural</button>
@@ -183,7 +192,7 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
     </div>
 
     <div class="bg-surface border border-border rounded-xl overflow-hidden">
-      {ranked.map((c, i) => {
+      {rankedWithGap.map((c, i) => {
         const total = c.physical + c.human + c.natural + c.institutions + c.technology;
         const maxTotal = 500;
         const barWidth = (total / maxTotal) * 100;
@@ -198,7 +207,7 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
              class="country-row flex items-center gap-3 px-4 py-3 border-b border-border/50 hover:bg-card/50 transition-colors group"
              data-region={c.region} data-rgdp={c.realGdp} data-gdp={c.gdp_per_capita_ppp}
              data-physical={c.physical} data-human={c.human} data-natural={c.natural}
-             data-institutions={c.institutions} data-technology={c.technology}>
+             data-institutions={c.institutions} data-technology={c.technology} data-gap={c.gap} data-absgap={Math.abs(c.gap)}>
             <span class="rank-cell text-text-muted font-mono text-xs w-6 text-right shrink-0">{i + 1}</span>
             <div class="flex items-center gap-2.5 w-36 sm:w-44 shrink-0">
               <img src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
@@ -225,6 +234,10 @@ const maxGdp = Math.max(...countries.map(c => c.gdp_per_capita_ppp));
             </div>
             <span class="text-text-secondary tabular-nums text-xs w-14 text-right shrink-0 hidden sm:block">
               ${(c.gdp_per_capita_ppp / 1000).toFixed(1)}k
+            </span>
+            <span class={`tabular-nums text-xs w-12 text-right shrink-0 hidden md:block font-semibold ${c.gap > 0 ? 'text-green' : c.gap < -5 ? 'text-red' : 'text-text-muted'}`}
+                  title={`Gap: rGDP ${c.realGdp} vs GDP normalized ${c.gdpNorm}. ${c.gap > 0 ? 'Richer than GDP suggests' : 'GDP overstates real wealth'}`}>
+              {c.gap > 0 ? '+' : ''}{c.gap}
             </span>
           </a>
         );
